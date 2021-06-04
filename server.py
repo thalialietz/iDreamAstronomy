@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 
 from pprint import pformat
 import os
-import requests
 
 app = Flask(__name__)
 app.secret_key = 'SECRETSECRETSECRET'

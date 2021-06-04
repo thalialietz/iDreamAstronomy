@@ -3,11 +3,38 @@
 {% block title %}iDreamAstronomy{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-      <div class="col-7">
-        <div id="welcome">
-          <h2>Welcome</h2>
-          <p>This is iDreamAstronomy</p>
+    <h1>Welcome</h1>
+    <h1>This is iDreamAstronomy</h1>
+    <p>What would you like to do?</p>
+
+    <h2>Create an Account</h2>
+  <form action="/users" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+
+    <h2>Log In</h2>
+  <form action="/log-in" method="POST">
+    <p>
+      Email <input type="text" name="user_email">
+    </p>
+    <p>
+      Password <input type="password" name="user_password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+
+  </form>
         </div>
 {% endblock %}
