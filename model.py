@@ -38,6 +38,7 @@ class Favorite(db.Model):
         return f'<Favorite favorite_id={self.favorite_id} user_id={self.user_id} asteroid_id={self.asteroid_id}>'
 
 class Asteroid(db.Model):
+    """All Asteroids information from API"""
 
     __tablename__ = 'asteroids'
 
