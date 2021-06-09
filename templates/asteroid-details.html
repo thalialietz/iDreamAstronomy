@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ asteroid.name }} - Details{% endblock %}
+
+{% block body %}
+  {% for asteroid in asteroids %}
+    <h1>{{ asteroid.name }}</h1>
+
+    <p>
+      {{ asteroid.nasa_jpl_url }}
+    </p>
+  {% endfor %}
+{% endblock %}

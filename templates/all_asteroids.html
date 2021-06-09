@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}All Asteroids{% endblock %}
+{% block body %}
+<h1>All Asteroids</h1>
+
+  <ul>
+    {% for asteroid in asteroids %}
+      <li>
+          {{ asteroid.name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

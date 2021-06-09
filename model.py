@@ -1,4 +1,4 @@
-"""Models for movie ratings app."""
+"""Models for asteroids app."""
 
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -13,7 +13,7 @@ class User(db.Model):
     user_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    username = db.Column(db.String)
+    username = db.Column(db.String, unique=True)
     fname = db.Column(db.String)
     lname = db.Column(db.String)
     email = db.Column(db.String, unique=True)
@@ -33,6 +33,9 @@ class Favorite(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     asteroid_id = db.Column(db.Integer, db.ForeignKey('asteroids.asteroid_id'))
 
+    users = db.relationship('User', backref='favorites')
+    asteroids = db.relationship('Asteroid', backref='favorites')
+
 
     def __repr__(self):
         return f'<Favorite favorite_id={self.favorite_id} user_id={self.user_id} asteroid_id={self.asteroid_id}>'
@@ -45,25 +48,26 @@ class Asteroid(db.Model):
     asteroid_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
+    api_asteroid_id = db.Column(db.Integer)
     name = db.Column(db.String)
     potentially_hazardous = db.Column(db.Boolean) #values can be T or F or/and 1 or 0
     close_approach_date = db.Column(db.DateTime)
     nasa_jpl_url = db.Column(db.String)
-    relative_velocity_kilometers_per_hour = db.Column(db.Integer)
-    relative_velocity_miles_per_hour = db.Column(db.Integer)
+    relative_velocity_kilometers_per_hour = db.Column(db.Float)
+    relative_velocity_miles_per_hour = db.Column(db.Float)
     orbiting_body = db.Column(db.String)
-    miss_distance_kilometers = db.Column(db.Integer)
-    miss_distance_miles = db.Column(db.Integer)
-    estimated_diameter_kilometers_min = db.Column(db.Integer)
-    estimated_diameter_kilometers_max = db.Column(db.Integer)
-    estimated_diameter_miles_min = db.Column(db.Integer)
-    estimated_diameter_miles_max = db.Column(db.Integer)
+    miss_distance_kilometers = db.Column(db.Float)
+    miss_distance_miles = db.Column(db.Float)
+    estimated_diameter_kilometers_min = db.Column(db.Float)
+    estimated_diameter_kilometers_max = db.Column(db.Float)
+    estimated_diameter_miles_min = db.Column(db.Float)
+    estimated_diameter_miles_max = db.Column(db.Float)
 
     def __repr__(self):
         return f'<Asteroid asteroid_id={self.asteroid_id} name={self.name} nasa_jpl_url={self.nasa_jpl_url}>'                   
 
 
-def connect_to_db(flask_app, db_uri='postgresql:///ratings', echo=True):
+def connect_to_db(flask_app, db_uri='postgresql:///asteroids', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

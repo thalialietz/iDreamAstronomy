@@ -1,5 +1,7 @@
 import requests
 import os
+import pdb
+
 API_KEY = os.environ['NASA_KEY']
 
 url = 'https://api.nasa.gov/neo/rest/v1/feed'
@@ -11,17 +13,19 @@ res = requests.get(url, params=payload)
 res.url
 
 data = res.json()
+pdb.set_trace()
 
-for date in data['near_earth_objects']: #the keys for data['near_earth_objects] are the dates from start to end
-    print(date)
-    print()
-    print()
-    for line in data['near_earth_objects'][date]: #value 
-        print(line)
-        print()
-        print()
-        print()
-        print()
-        print()
+print(data)
+# for date in data['near_earth_objects']: #the keys for data['near_earth_objects] are the dates from start to end
+#     print(date)
+#     print()
+#     print()
+#     for line in data['near_earth_objects'][date]: #value 
+#         print(line)
+#         print()
+#         print()
+#         print()
+#         print()
+#         print()
 
 # print(data)
