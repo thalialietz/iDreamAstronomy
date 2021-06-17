@@ -6,6 +6,7 @@
   <ul>
     {% for asteroid in asteroids %}
       <li>
+        <a href="/asteroids/{{ asteroid.api_asteroid_id }}">
           {{ asteroid.name }}
         </a>
       </li>

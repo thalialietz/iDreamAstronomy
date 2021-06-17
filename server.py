@@ -29,9 +29,9 @@ def all_asteroids():
 @app.route('/asteroids/<api_asteroid_id>')
 def get_asteroid_details(api_asteroid_id):
     """View the details of an asteroid."""
-
+    print(api_asteroid_id)
     asteroid = crud.get_asteroid_by_id(api_asteroid_id)
-
+    print(asteroid)
     return render_template('asteroid-details.html', asteroid=asteroid)
 
 @app.route("/users", methods=['POST'])
@@ -51,14 +51,16 @@ def register_user():
 
     return redirect('/')
 
-@app.route('/log-in', methods=["POST"])
+@app.route('/log-in')
 def log_user_in():
 
-    username = request.form.get('user_username')
-    password = request.form.get("user_password")
+    username = request.args.get('user_username')
+    password = request.args.get("user_password")
 
     user = crud.get_user_by_username(username)
-
+    print(username)
+    print(password)
+    print(user)
     if user and user.password == password:
         flash("Logged in!")
         session['username'] = username

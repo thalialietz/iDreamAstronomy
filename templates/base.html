@@ -5,6 +5,11 @@
   <link rel="icon" type="image" href="https://img.icons8.com/color/452/nasa.png">
 </head>
 <body>
-  {% block body %}{% endblock %}
+  {% for msg in get_flashed_messages() %}
+  <p class="flash-msg">
+    {{ msg }}
+  </p>
+  {% endfor %}
+{% block body %}{% endblock %}
 </body>
 </html>

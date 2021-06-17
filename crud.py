@@ -38,7 +38,7 @@ def all_asteroids():
 
 def get_asteroid_by_id(api_asteroid_id):
 
-    return Asteroid.query.get(api_asteroid_id)
+    return Asteroid.query.filter_by(api_asteroid_id=api_asteroid_id).one()
 
 def all_users():
 
