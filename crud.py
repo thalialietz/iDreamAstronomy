@@ -7,10 +7,10 @@ import requests
 
 API_KEY = os.environ['NASA_KEY']
 
-def create_user(username, email, password):
+def create_user(username, fname, lname, email, password):
     """Create and return a new user."""
 
-    user = User(username=username, email=email, password=password)
+    user = User(username=username, fname=fname, lname=lname, email=email, password=password)
 
     db.session.add(user)
     db.session.commit()
@@ -39,6 +39,13 @@ def all_asteroids():
 def get_asteroid_by_id(api_asteroid_id):
 
     return Asteroid.query.filter_by(api_asteroid_id=api_asteroid_id).one()
+
+def get_picture_of_the_day():
+
+    url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+    # params = {'API_KEY': API_KEY}
+    res = requests.get(url)
+    data = res.json()
 
 def all_users():
 

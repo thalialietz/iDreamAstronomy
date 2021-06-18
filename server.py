@@ -1,6 +1,7 @@
 from flask import (Flask, render_template, request, session,
                    redirect, url_for, flash)
 from model import connect_to_db
+from datetime import date, datetime, timedelta
 import crud
 import model
 import os
@@ -11,6 +12,8 @@ app = Flask(__name__)
 app.secret_key = 'SECRETSECRETSECRET'
 
 API_KEY = os.environ['NASA_KEY']
+today = '2021-06-16'
+# today = date.today()
 
 
 @app.route('/')
@@ -18,6 +21,19 @@ def homepage():
     """Show homepage."""
 
     return render_template('homepage.html')
+
+@app.route('/homepage')
+def account_homepage():
+    """Show account homepage"""
+
+    username = session.get('username')
+    print(username)
+
+    user = crud.get_user_by_username(username)
+    print(user)
+        
+    return render_template('account-homepage.html', user=user)
+
 
 @app.route("/asteroids")
 def all_asteroids():
@@ -29,15 +45,30 @@ def all_asteroids():
 @app.route('/asteroids/<api_asteroid_id>')
 def get_asteroid_details(api_asteroid_id):
     """View the details of an asteroid."""
-    print(api_asteroid_id)
+
     asteroid = crud.get_asteroid_by_id(api_asteroid_id)
-    print(asteroid)
+
     return render_template('asteroid-details.html', asteroid=asteroid)
+
+@app.route('/apod')
+def show_picture_of_the_day():
+    """Show the astronomy picture of the day"""
+
+    url = "https://api.nasa.gov/planetary/apod"
+    params = {'date': today, 'thumbs': 'thumbs', 'api_key': API_KEY}
+    res = requests.get(url, params)
+    print(res.url)
+    apod = res.json()
+    print(apod)
+    
+    return render_template('apod.html', apod=apod)
 
 @app.route("/users", methods=['POST'])
 def register_user():
 
     username = request.form.get('username')
+    fname = request.form.get('fname')
+    lname = request.form.get('lname')
     email = request.form.get('email')
     password = request.form.get('password')
 
@@ -46,7 +77,7 @@ def register_user():
     if user:
         flash('Cannot create an account with that username and email. Try again')
     else:
-        crud.create_user(username, email, password)
+        crud.create_user(username, fname, lname, email, password)
         flash('Account created! Please log in')
 
     return redirect('/')
@@ -58,12 +89,10 @@ def log_user_in():
     password = request.args.get("user_password")
 
     user = crud.get_user_by_username(username)
-    print(username)
-    print(password)
-    print(user)
+    
     if user and user.password == password:
-        flash("Logged in!")
         session['username'] = username
+        return redirect('/homepage')
     else:
         flash("Wrong password, try again!")
 
