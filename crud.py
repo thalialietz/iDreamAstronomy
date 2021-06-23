@@ -1,6 +1,7 @@
 """CRUD operations."""
 
 from model import db, User, Favorite, Asteroid, connect_to_db
+import seed
 import json
 import os
 import requests
@@ -32,20 +33,30 @@ estimated_diameter_kilometers_max, estimated_diameter_miles_min, estimated_diame
 
     return asteroid
 
+def create_favorite(user_id, asteroid_id):
+    
+    favorite = Favorite(user_id=user_id, asteroid_id=asteroid_id)
+
+    db.session.add(favorite)
+    db.session.commit()
+
+    return favorite
+
+def all_favorites():
+
+    return Favorite.query.all()
+
 def all_asteroids():
+
+    seed.clear_database()
+
+    seed.get_all_asteroids()
 
     return Asteroid.query.all()
 
-def get_asteroid_by_id(api_asteroid_id):
+def get_asteroid_by_id(asteroid_id):
 
-    return Asteroid.query.filter_by(api_asteroid_id=api_asteroid_id).one()
-
-def get_picture_of_the_day():
-
-    url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
-    # params = {'API_KEY': API_KEY}
-    res = requests.get(url)
-    data = res.json()
+    return Asteroid.query.filter_by(asteroid_id=asteroid_id).one()
 
 def all_users():
 

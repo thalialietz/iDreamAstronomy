@@ -3,9 +3,15 @@
 {% block title %}{{ asteroid.name }} - Details{% endblock %}
 
 {% block body %}
-    <h1>{{ asteroid.name }}</h1>
+    <h1>{{ asteroid.name }} {{asteroid.asteroid_id}}</h1>
 
     <p>
       {{ asteroid.nasa_jpl_url }}
     </p>
+
+    <p>Would you like to add this asteroid to your journal?</p>
+    <form action="/save-favorites">
+      <input name='asteroid_id' value={{asteroid.asteroid_id}} hidden></input>
+      <button class="btn" type="submit">Yes</button>
+  </form>
 {% endblock %}

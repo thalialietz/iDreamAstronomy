@@ -1,7 +1,8 @@
 from flask import (Flask, render_template, request, session,
                    redirect, url_for, flash)
 from model import connect_to_db
-from datetime import date, datetime, timedelta
+# from datetime import date, datetime, timedelta
+import datetime
 import crud
 import model
 import os
@@ -12,8 +13,12 @@ app = Flask(__name__)
 app.secret_key = 'SECRETSECRETSECRET'
 
 API_KEY = os.environ['NASA_KEY']
-today = '2021-06-16'
+# today = '2021-06-16'
 # today = date.today()
+
+today = datetime.date.today()
+yesterday = today - datetime.timedelta(days = 1)
+tomorrow = today + datetime.timedelta(days = 1) 
 
 
 @app.route('/')
@@ -27,10 +32,8 @@ def account_homepage():
     """Show account homepage"""
 
     username = session.get('username')
-    print(username)
 
     user = crud.get_user_by_username(username)
-    print(user)
         
     return render_template('account-homepage.html', user=user)
 
@@ -42,11 +45,11 @@ def all_asteroids():
         
     return render_template("all_asteroids.html", asteroids=asteroids)
 
-@app.route('/asteroids/<api_asteroid_id>')
-def get_asteroid_details(api_asteroid_id):
+@app.route('/asteroids/<asteroid_id>')
+def get_asteroid_details(asteroid_id):
     """View the details of an asteroid."""
 
-    asteroid = crud.get_asteroid_by_id(api_asteroid_id)
+    asteroid = crud.get_asteroid_by_id(asteroid_id)
 
     return render_template('asteroid-details.html', asteroid=asteroid)
 
@@ -54,14 +57,36 @@ def get_asteroid_details(api_asteroid_id):
 def show_picture_of_the_day():
     """Show the astronomy picture of the day"""
 
+    date = request.args.get('apod_date')
+
     url = "https://api.nasa.gov/planetary/apod"
-    params = {'date': today, 'thumbs': 'thumbs', 'api_key': API_KEY}
+    params = {'date': date, 'thumbs': 'thumbs', 'api_key': API_KEY}
     res = requests.get(url, params)
-    print(res.url)
     apod = res.json()
-    print(apod)
     
     return render_template('apod.html', apod=apod)
+
+@app.route("/save-favorites")
+def save_favorites_asteroid():
+    """Save favorite asteroid"""
+    user_id = session.get('user_id')
+    print(user_id)
+
+    asteroid_id = request.args.get('asteroid_id')
+    print(asteroid_id)
+    
+    favorite_asteroid = crud.create_favorite(user_id, asteroid_id)
+
+    return redirect('/my-journal')
+
+@app.route("/my-journal")
+def personal_journal():
+
+    favorites = crud.all_favorites()
+    print(favorites)
+
+    return render_template('journal.html', favorites=favorites)
+
 
 @app.route("/users", methods=['POST'])
 def register_user():
@@ -91,6 +116,7 @@ def log_user_in():
     user = crud.get_user_by_username(username)
     
     if user and user.password == password:
+        session['user_id'] = user.user_id
         session['username'] = username
         return redirect('/homepage')
     else:

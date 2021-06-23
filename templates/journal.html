@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<h1>All Favorites</h1>
+
+  <ul>
+    {% for favorite in favorites %}
+      <li>
+          {{ favorite.asteroids.name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

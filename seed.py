@@ -3,6 +3,7 @@
 import os
 import json
 import requests
+from flask import request
 from random import choice, randint
 from datetime import datetime
 
@@ -11,19 +12,22 @@ import model
 import server
 
 API_KEY = os.environ['NASA_KEY']
-
-os.system('dropdb asteroids')
-os.system('createdb asteroids')
 model.connect_to_db(server.app)
 model.db.create_all()
 
+def clear_database():
 
-asteroids = {}
+  os.system('dropdb asteroids')
+  os.system('createdb asteroids')
+
 def get_all_asteroids():
 
+    start_date = request.args.get('asteroid_start_date')
+    end_date = request.args.get('asteroid_end_date')
+
     url = "https://api.nasa.gov/neo/rest/v1/feed"
-    params = {'start_date': '2021-06-01', 
-      'end_date': '2021-06-02', 
+    params = {'start_date': start_date, 
+      'end_date': end_date, 
       'API_KEY': API_KEY
     }
     res = requests.get(url, params=params)
@@ -52,6 +56,6 @@ orbiting_body, miss_distance_kilometers, miss_distance_miles, estimated_diameter
 estimated_diameter_kilometers_max, estimated_diameter_miles_min, estimated_diameter_miles_max)
             # asteroid_list.append((name, close_approach_date, miss_distance_kilometers, estimated_diameter_kilometers_min, nasa_jpl_url))
 
-get_all_asteroids()
+
 
 

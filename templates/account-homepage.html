@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}iDreamAstronomy{% endblock %}
+
+{% block body %}
+    <h1>Welcome {{user.fname}} {{user.lname}}</h1>
+    <h2>What dates would you like to see asteroids from?</h2>
+    <form action="/asteroids">
+        <label for="asteroids_selection">Start Date:</label>
+        <input type="date" id="asteroid_start_date" name="asteroid_start_date" required>
+        <label for="asteroids_selection">End Date:</label>
+        <input type="date" id="asteroid_end_date" name="asteroid_end_date" required>
+        <input type="submit">
+    </form>
+
+    <h2>When would you like to see the Astronomy picture?</h2>
+    <form action="/apod">
+        <label for="apod_selection">Date:</label>
+        <input type="date" id="apod_date" name="apod_date" required>
+        <input type="submit">
+    </form>
+    <p>
+        <a href="/asteroids">See all asteroids</a>
+    </p>
+
+    <p>
+        <a href="/apod">Get picture of the day</a>
+    </p>
+
+{% endblock %}

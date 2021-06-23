@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ apod.title }} - Details{% endblock %}
+
+{% block body %}
+    <h1>{{ apod.title }}</h1>
+    <p>
+    <b>
+      Photographer:
+    </b>{{ apod.copyright }}</p>
+
+    <p>
+    <b>
+      Date: 
+    </b>{{apod.date}}</p>
+
+    <p>
+    <b>
+      Explanation: 
+    </b>{{apod.explanation}}</p>
+
+    <img src="{{ apod.url }}">
+    
+    
+{% endblock %}
