@@ -1,17 +1,74 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ asteroid.name }} - Details{% endblock %}
+{% block title %}{{ asteroid_details_dict.name }} - Details{% endblock %}
 
 {% block body %}
-    <h1>{{ asteroid.name }} {{asteroid.asteroid_id}}</h1>
+    <h1>{{ asteroid_details_dict.name }}</h1>
+
+    <a href='{{asteroid_details_dict.nasa_jpl_url}}'>
+      Link to its official website
+    </a>
 
     <p>
-      {{ asteroid.nasa_jpl_url }}
+      Is it hazardous:
+    </p>{{ asteroid_details_dict.potentially_hazardous }}
+
+    <p>
+      Close approach date:
+    </p> {{ asteroid_details_dict.close_approach_date }}
+
+    <p>
+      Relative Velocity in Kilometers:
+    </p> {{ asteroid_details_dict.relative_velocity_kilometers_per_hour }}
+
+    <p>
+      Relative Velocity in Miles:
+    </p> {{ asteroid_details_dict.relative_velocity_miles_per_hour }}
+
+    <p>
+      Orbiting body(planet):
+    </p> {{ asteroid_details_dict.orbiting_body }}
+
+    <p>
+      Miss distance in kilometers:
+    </p> {{ asteroid_details_dict.miss_distance_kilometers}}
+
+    <p>
+      Miss distance in miles:
+    </p> {{ asteroid_details_dict.miss_distance_miles }}
+
+    <p>
+      Estimated diameter in kilometers:<br>
+      Min: {{ asteroid_details_dict.estimated_diameter_kilometers_min }}<br>
+      Max: {{ asteroid_details_dict.estimated_diameter_kilometers_max}}
+    </p>
+
+    <p>
+      Estimated diameter in miles:<br>
+      Min: {{ asteroid_details_dict.estimated_diameter_miles_min }}<br>
+      Max: {{ asteroid_details_dict.estimated_diameter_miles_max}}
     </p>
 
     <p>Would you like to add this asteroid to your journal?</p>
-    <form action="/save-favorites">
-      <input name='asteroid_id' value={{asteroid.asteroid_id}} hidden></input>
-      <button class="btn" type="submit">Yes</button>
-  </form>
+    
+    <form action="/save-favorites" method="POST">
+      <input type='text' name='api_asteroid_id' value= {{ asteroid_details_dict.api_asteroid_id }} hidden>
+      <input type='text' name='name' value='{{ asteroid_details_dict.name }}' hidden>
+      <input type='text' name='potentially_hazardous' value={{ asteroid_details_dict.potentially_hazardous }} hidden>
+      <input type='text' name='close_approach_date' value={{ asteroid_details_dict.close_approach_date }} hidden>
+      <input type='text' name='nasa_jpl_url' value={{ asteroid_details_dict.nasa_jpl_url }} hidden>
+      <input type='text' name='relative_velocity_kilometers_per_hour' value={{ asteroid_details_dict.relative_velocity_kilometers_per_hour }} hidden>
+      <input type='text' name='relative_velocity_miles_per_hour' value={{ asteroid_details_dict.relative_velocity_miles_per_hour }} hidden>
+      <input type='text' name='orbiting_body' value={{ asteroid_details_dict.orbiting_body }} hidden>
+      <input type='text' name='miss_distance_kilometers' value={{ asteroid_details_dict.miss_distance_kilometers }} hidden>
+      <input type='text' name='miss_distance_miles' value={{ asteroid_details_dict.miss_distance_miles }} hidden>
+      <input type='text' name='estimated_diameter_kilometers_min' value={{ asteroid_details_dict.estimated_diameter_kilometers_min }} hidden>
+      <input type='text' name='estimated_diameter_kilometers_max' value={{ asteroid_details_dict.estimated_diameter_kilometers_max }} hidden>
+      <input type='text' name='estimated_diameter_miles_min' value={{ asteroid_details_dict.estimated_diameter_miles_min }} hidden>
+      <input type='text' name='estimated_diameter_miles_max' value={{ asteroid_details_dict.estimated_diameter_miles_max }} hidden>
+
+      <input type="submit" value='Yes'>
+    </form>
+    
+
 {% endblock %}

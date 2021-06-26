@@ -1,12 +1,7 @@
 """CRUD operations."""
 
 from model import db, User, Favorite, Asteroid, connect_to_db
-import seed
-import json
-import os
-import requests
 
-API_KEY = os.environ['NASA_KEY']
 
 def create_user(username, fname, lname, email, password):
     """Create and return a new user."""
@@ -17,6 +12,7 @@ def create_user(username, fname, lname, email, password):
     db.session.commit()
 
     return user
+
 
 def create_asteroid(api_asteroid_id, name, potentially_hazardous, close_approach_date, nasa_jpl_url, relative_velocity_kilometers_per_hour, relative_velocity_miles_per_hour, 
 orbiting_body, miss_distance_kilometers, miss_distance_miles, estimated_diameter_kilometers_min,
@@ -33,6 +29,7 @@ estimated_diameter_kilometers_max, estimated_diameter_miles_min, estimated_diame
 
     return asteroid
 
+
 def create_favorite(user_id, asteroid_id):
     
     favorite = Favorite(user_id=user_id, asteroid_id=asteroid_id)
@@ -42,29 +39,31 @@ def create_favorite(user_id, asteroid_id):
 
     return favorite
 
+
 def all_favorites():
 
     return Favorite.query.all()
 
+
 def all_asteroids():
-
-    seed.clear_database()
-
-    seed.get_all_asteroids()
 
     return Asteroid.query.all()
 
-def get_asteroid_by_id(asteroid_id):
 
-    return Asteroid.query.filter_by(asteroid_id=asteroid_id).one()
+def get_asteroid_by_api_id(api_asteroid_id):
 
+    return Asteroid.query.filter(Asteroid.api_asteroid_id == api_asteroid_id).first()
+    
+    
 def all_users():
 
     return User.query.all()
 
+
 def get_user_by_id(user_id):
 
     return User.query.get(user_id)
+    
 
 def get_user_by_username(username):
 

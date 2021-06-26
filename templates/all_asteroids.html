@@ -4,10 +4,29 @@
 <h1>All Asteroids</h1>
 
   <ul>
-    {% for asteroid in asteroids %}
+    {% for asteroid in list_of_asteroids %}
       <li>
-        <a href="/asteroids/{{ asteroid.asteroid_id }}">
-          {{ asteroid.name }}
+
+          <form action='/asteroids/{{ asteroid.api_asteroid_id }}'>
+            <input type='text' name='api_asteroid_id' value= {{ asteroid.api_asteroid_id }} hidden>
+            <input type='text' name='name' value='{{ asteroid.name }}' hidden>
+            <input type='text' name='potentially_hazardous' value={{ asteroid.potentially_hazardous }} hidden>
+            <input type='text' name='close_approach_date' value={{ asteroid.close_approach_date }} hidden>
+            <input type='text' name='nasa_jpl_url' value={{ asteroid.nasa_jpl_url }} hidden>
+            <input type='text' name='relative_velocity_kilometers_per_hour' value={{ asteroid.relative_velocity_kilometers_per_hour }} hidden>
+            <input type='text' name='relative_velocity_miles_per_hour' value={{ asteroid.relative_velocity_miles_per_hour }} hidden>
+            <input type='text' name='orbiting_body' value={{ asteroid.orbiting_body }} hidden>
+            <input type='text' name='miss_distance_kilometers' value={{ asteroid.miss_distance_kilometers }} hidden>
+            <input type='text' name='miss_distance_miles' value={{ asteroid.miss_distance_miles }} hidden>
+            <input type='text' name='estimated_diameter_kilometers_min' value={{ asteroid.estimated_diameter_kilometers_min }} hidden>
+            <input type='text' name='estimated_diameter_kilometers_max' value={{ asteroid.estimated_diameter_kilometers_max }} hidden>
+            <input type='text' name='estimated_diameter_miles_min' value={{ asteroid.estimated_diameter_miles_min }} hidden>
+            <input type='text' name='estimated_diameter_miles_max' value={{ asteroid.estimated_diameter_miles_max }} hidden>
+
+            <input type="submit" value='{{ asteroid.name }}'>
+          </form>
+
+
         </a>
       </li>
     {% endfor %}

@@ -22,6 +22,7 @@ class User(db.Model):
     def __repr__(self):
         return f'<User user_id={self.user_id} email={self.email} username={self.username}>'
 
+
 class Favorite(db.Model):
     """Favorites Asteroids"""
 
@@ -36,9 +37,9 @@ class Favorite(db.Model):
     users = db.relationship('User', backref='favorites')
     asteroids = db.relationship('Asteroid', backref='favorites')
 
-
     def __repr__(self):
         return f'<Favorite favorite_id={self.favorite_id} user_id={self.user_id} asteroid_id={self.asteroid_id}>'
+
 
 class Asteroid(db.Model):
     """All Asteroids information from API"""
@@ -50,7 +51,7 @@ class Asteroid(db.Model):
                         primary_key=True)
     api_asteroid_id = db.Column(db.Integer)
     name = db.Column(db.String)
-    potentially_hazardous = db.Column(db.Boolean) #values can be T or F or/and 1 or 0
+    potentially_hazardous = db.Column(db.String) #values can be T or F or/and 1 or 0
     close_approach_date = db.Column(db.DateTime)
     nasa_jpl_url = db.Column(db.String)
     relative_velocity_kilometers_per_hour = db.Column(db.Float)
@@ -67,7 +68,7 @@ class Asteroid(db.Model):
         return f'<Asteroid asteroid_id={self.asteroid_id} name={self.name} nasa_jpl_url={self.nasa_jpl_url}>'                   
 
 
-def connect_to_db(flask_app, db_uri='postgresql:///asteroids', echo=True):
+def connect_to_db(flask_app, db_uri='postgresql:///asteroidsdb', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
