@@ -31,6 +31,7 @@ def account_homepage():
 
 @app.route("/asteroids")
 def all_asteroids():
+    """Show all asteroids"""
 
     start_date = request.args.get('asteroid_start_date')
     end_date = request.args.get('asteroid_end_date')
@@ -66,7 +67,7 @@ def all_asteroids():
             asteroid_data_dict['estimated_diameter_miles_max'] = asteroid['estimated_diameter']['miles']['estimated_diameter_max']
 
             list_of_asteroids.append(asteroid_data_dict)
-        
+
     return render_template("all_asteroids.html", list_of_asteroids=list_of_asteroids)
 
 
@@ -74,7 +75,7 @@ def all_asteroids():
 def get_asteroid_details(api_asteroid_id):
     """View the details of an asteroid."""
 
-    asteroid_details_dict={}
+    asteroid_details_dict = {}
 
     asteroid_details_dict['api_asteroid_id'] = request.args.get('api_asteroid_id')
     asteroid_details_dict['name'] = request.args.get('name')
@@ -114,7 +115,7 @@ def save_favorites_asteroid():
 
     user_id = session.get('user_id')
 
-    asteroid_details_dict={}
+    asteroid_details_dict = {}
 
     asteroid_details_dict['api_asteroid_id'] = request.form.get('api_asteroid_id')
     asteroid_details_dict['name'] = request.form.get('name')
@@ -131,7 +132,6 @@ def save_favorites_asteroid():
     asteroid_details_dict['estimated_diameter_miles_min'] = request.form.get('estimated_diameter_miles_min')
     asteroid_details_dict['estimated_diameter_miles_max'] = request.form.get('estimated_diameter_miles_max')
 
-
     api_asteroid_id = request.form.get('api_asteroid_id')
     
     asteroid = crud.get_asteroid_by_api_id(api_asteroid_id)
@@ -142,7 +142,14 @@ def save_favorites_asteroid():
 orbiting_body=asteroid_details_dict['orbiting_body'], miss_distance_kilometers=asteroid_details_dict['miss_distance_kilometers'], miss_distance_miles=asteroid_details_dict['miss_distance_miles'], 
 estimated_diameter_kilometers_min=asteroid_details_dict['estimated_diameter_kilometers_min'], estimated_diameter_kilometers_max=asteroid_details_dict['estimated_diameter_kilometers_max'], 
 estimated_diameter_miles_min=asteroid_details_dict['estimated_diameter_miles_min'], estimated_diameter_miles_max=asteroid_details_dict['estimated_diameter_miles_max'])
-   
+    
+    list_of_favorites = crud.get_favorite_by_user_id(user_id)
+
+    for favorite in list_of_favorites:
+        if favorite.asteroids.api_asteroid_id == asteroid.api_asteroid_id:
+            flash("This asteroid is already stored in your favorites")
+            return redirect('/my-journal')
+        
     favorite_asteroid = crud.create_favorite(user_id, asteroid.asteroid_id)
 
     return redirect('/my-journal')
@@ -150,6 +157,7 @@ estimated_diameter_miles_min=asteroid_details_dict['estimated_diameter_miles_min
 
 @app.route("/my-journal")
 def personal_journal():
+    """Display favorites asteroids for that user"""
 
     favorites = crud.all_favorites()
 
@@ -158,6 +166,7 @@ def personal_journal():
 
 @app.route("/users", methods=['POST'])
 def register_user():
+    """Registers a new user in the database"""
 
     username = request.form.get('username')
     fname = request.form.get('fname')
@@ -178,6 +187,7 @@ def register_user():
 
 @app.route('/log-in')
 def log_user_in():
+    """Logs the user in"""
 
     username = request.args.get('user_username')
     password = request.args.get("user_password")
