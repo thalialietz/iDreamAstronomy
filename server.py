@@ -144,7 +144,7 @@ estimated_diameter_kilometers_min=asteroid_details_dict['estimated_diameter_kilo
 estimated_diameter_miles_min=asteroid_details_dict['estimated_diameter_miles_min'], estimated_diameter_miles_max=asteroid_details_dict['estimated_diameter_miles_max'])
     
     list_of_favorites = crud.get_favorite_by_user_id(user_id)
-
+    print(user_id)
     for favorite in list_of_favorites:
         if favorite.asteroids.api_asteroid_id == asteroid.api_asteroid_id:
             flash("This asteroid is already stored in your favorites")
@@ -159,7 +159,9 @@ estimated_diameter_miles_min=asteroid_details_dict['estimated_diameter_miles_min
 def personal_journal():
     """Display favorites asteroids for that user"""
 
-    favorites = crud.all_favorites()
+    user_id = session.get('user_id')
+    
+    favorites = crud.get_favorite_by_user_id(user_id)
 
     return render_template('journal.html', favorites=favorites)
 
