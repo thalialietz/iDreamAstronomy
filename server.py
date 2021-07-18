@@ -208,6 +208,13 @@ def log_user_in():
     return redirect('/')
 
 
+@app.route('/logout')
+def logout():
+   # remove the username from the session if it is there
+   session.pop('username', None)
+   session.pop('user_id', None)
+   return redirect('/')
+
 if __name__ == '__main__':
     app.debug = True
     connect_to_db(app)

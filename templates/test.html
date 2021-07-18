@@ -1,0 +1,48 @@
+
+<div class="container-sm">
+
+    <form action="/users" method="POST" class="row row-cols-lg g-3 align-items-center">
+      <h2>Create an Account</h2>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" required>
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="fname" required>
+        <label for="floatingInput">First Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="lname" required>
+        <label for="floatingInput">Last Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+        <label for="floatingPassword">Password</label>
+      </div>
+    
+      <div class="col-12">
+        <button type="sign-in" class="btn btn-primary">Sign in</button>
+      </div>
+    </form>
+  
+      
+    <form action="/log-in" class="row row-cols-lg g-3 align-items-center">
+      <h2>Log In</h2>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="user_username" required>
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="user_password" required>
+        <label for="floatingPassword">Password</label>
+      </div>
+  
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </div>
+    </form>
+  </div>
