@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}iDreamAstronomy{% endblock %}
+
+{% block body %}
+<div class="my-account">
+    <h1>Welcome {{user.fname}} {{user.lname}}</h1>
+    <h2>What would you like to change in your account?</h2>
+
+    <a href="/change-password">Change your password?</a>
+    <a href="/change-account-info">Change account information?</a>
+
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Reset Password{% endblock %}
+
+{% block body %}
+
+<h1>Change your account information?</h1>
+<h2>Please fill out only what you intend to change</h2>
+<form action="/change-account-info" class="change-acc-info">
+    <label for="new_fname">New First Name:</label>
+    <input type="text" id="new_fname" name="new_fname">
+    <label for="new_lname">New Last Name:</label>
+    <input type="text" id="new_lname" name="new_lname">
+    <label for="new_email">New Email Address:</label>
+    <input type="email-address" id="new_email" name="new_email">
+    <button class="btn btn-light">Submit</button>
+
+</form>
+
+{% endblock %}

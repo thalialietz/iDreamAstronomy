@@ -1,6 +1,6 @@
 from flask import (Flask, render_template, request, session,
                    redirect, url_for, flash)
-from model import connect_to_db
+from model import db, connect_to_db
 import crud
 import os
 import requests
@@ -15,7 +15,10 @@ API_KEY = os.environ['NASA_KEY']
 def homepage():
     """Show homepage."""
 
-    return render_template('homepage.html')
+    if 'username' in session:
+        return redirect("/profile")
+    else:
+        return render_template('homepage.html')
 
 
 @app.route('/profile')
@@ -26,7 +29,89 @@ def account_homepage():
 
     user = crud.get_user_by_username(username)
         
-    return render_template('account-homepage.html', user=user)
+    return render_template('profile.html', user=user)
+
+
+@app.route('/my-account')
+def my_account_details():
+    """Show account details and allow user to make changes"""
+
+    username = session.get('username')
+
+    user = crud.get_user_by_username(username)
+
+    return render_template('my-account.html', user=user)
+
+
+@app.route('/change-password')
+def change_password():
+    """Display the form to change current password"""
+
+    return render_template('change_password.html')
+
+
+@app.route('/change-current-password')
+def change_current_password():
+    """Process the change of password in the database"""
+
+    username = session.get('username')
+
+    user = crud.get_user_by_username(username)
+
+    current_password = request.args.get('current_password')
+
+    new_password = request.args.get('new_password')
+
+    if user.password != current_password:
+        flash("The password you entered does not match our records, please try again")
+    if user.password == current_password:
+        user.password = new_password
+        db.session.commit()
+        flash("password has been successfully updated!")
+        return redirect('/profile')
+
+
+    return redirect('/change-password')
+
+
+@app.route('/change-acc-information')
+def change_acc_information():
+    """Display the form to change account information"""
+
+    return render_template('change_acc_info.html')
+
+
+@app.route('/change-account-info')
+def change_account_info():
+    """Process the change on account information in the database"""
+
+    username = session.get('username')
+
+    user = crud.get_user_by_username(username)
+
+    new_fname = request.args.get('new_fname')
+
+    new_lname = request.args.get('new_lname')
+
+    new_email = request.args.get('new_email')
+
+    if new_fname:
+        user.fname = new_fname
+        db.session.commit()
+        flash("The information you entered has been successfully updated!")
+        return redirect('/profile')
+    if new_lname:
+        user.lname = new_lname
+        db.session.commit()
+        flash("The information you entered has been successfully updated!")
+        return redirect('/profile')
+    if new_email:
+        user.email = new_email
+        db.session.commit()
+        flash("The information you entered has been successfully updated!")
+        return redirect('/profile')
+
+    return redirect('/change-acc-information')
 
 
 @app.route("/asteroids")
@@ -144,7 +229,7 @@ estimated_diameter_kilometers_min=asteroid_details_dict['estimated_diameter_kilo
 estimated_diameter_miles_min=asteroid_details_dict['estimated_diameter_miles_min'], estimated_diameter_miles_max=asteroid_details_dict['estimated_diameter_miles_max'])
     
     list_of_favorites = crud.get_favorite_by_user_id(user_id)
-    print(user_id)
+    
     for favorite in list_of_favorites:
         if favorite.asteroids.api_asteroid_id == asteroid.api_asteroid_id:
             flash("This asteroid is already stored in your favorites")
@@ -210,10 +295,12 @@ def log_user_in():
 
 @app.route('/logout')
 def logout():
-   # remove the username from the session if it is there
-   session.pop('username', None)
-   session.pop('user_id', None)
-   return redirect('/')
+    """Removes the user from the session"""
+
+    session.pop('username', None)
+    session.pop('user_id', None)
+    return redirect('/')
+
 
 if __name__ == '__main__':
     app.debug = True
