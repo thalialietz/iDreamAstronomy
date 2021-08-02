@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Asteroids Selection{% endblock %}
+{% block body %}
+<div>
+    
+    <form >
+    </form>
+</div>
+<form action="/asteroids">
+    <h2>What dates would you like to see asteroids from?</h2>
+    <div class="row">
+        <div class="col-sm-3 my-1">
+            <label for="asteroids_selection">Start Date:</label>
+            <input type="date" class="form-control" id="asteroid_start_date" name="asteroid_start_date" min="" required>
+        </div>
+        <div class="col-sm-3 my-1">
+            <label for="asteroids_selection">End Date:</label>
+            <input type="date" class="form-control" id="asteroid_end_date" name="asteroid_end_date" min="" required>        
+        </div>
+        
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+<script>
+
+    document.querySelector('#asteroid_start_date').onchange = function(){
+    let dtFrom = document.querySelector('#asteroid_start_date').value;
+    let dtTo = new Date(dtFrom);
+    dtTo.setDate(dtTo.getDate() + 8);
+    let sMonthTo = ((dtTo.getMonth() + 1) < 10 ? '0' + (dtTo.getMonth() + 1) : (dtTo.getMonth() + 1));
+    let sDayTo = (dtTo.getDate() < 10 ? '0' + dtTo.getDate() : dtTo.getDate());
+    let endDate = new Date(dtFrom)
+    endDate.setDate(dtTo.getDate() - 7);
+    let sEndDate = (new Date(endDate)).toISOString().split('T')[0]
+
+    document.querySelector('#asteroid_end_date').setAttribute('max', dtTo.getFullYear() + '-' + sMonthTo + '-' + sDayTo);
+    document.querySelector('#asteroid_end_date').setAttribute('min', sEndDate);
+    };
+
+    document.querySelector('#asteroid_end_date').onchange = function(){
+    let nEndDate = document.querySelector('#asteroid_end_date').value;
+    let dtTo = new Date(nEndDate);
+    dtTo.setDate(dtTo.getDate() - 7);
+    let sEndDate = (new Date(dtTo)).toISOString().split('T')[0]
+
+    document.querySelector('#asteroid_start_date').setAttribute('min', sEndDate);
+    };
+    
+</script>
+{% endblock %}

@@ -11,3 +11,66 @@ sign_in_btn.addEventListener("click", () => {
 });
 
 
+function toggleShowResetPassword() {
+  const UserPassword = document.getElementById("update_password");
+  if (UserPassword.type === "password") {
+    UserPassword.type = "text";
+  } else {
+    UserPassword.type = "password";
+  }
+}
+
+function toggleShowNewPassword() {
+  const UserPassword = document.getElementById("new_password");
+  if (UserPassword.type === "password") {
+    UserPassword.type = "text";
+  } else {
+    UserPassword.type = "password";
+  }
+}
+
+
+const rmCheck = document.getElementById("rememberMe"),
+usernameInput = document.getElementById("user_username");
+
+if (localStorage.checkbox && localStorage.checkbox !== "") {
+rmCheck.setAttribute("checked", "checked");
+usernameInput.value = localStorage.username;
+} else {
+rmCheck.removeAttribute("checked");
+usernameInput.value = "";
+}
+
+function lsRememberMe() {
+if (rmCheck.checked && usernameInput.value !== "") {
+localStorage.username = usernameInput.value;
+localStorage.checkbox = rmCheck.value;
+} else {
+localStorage.username = "";
+localStorage.checkbox = "";
+}
+}
+
+$(document).on('click', '.toggle-pasçsword', function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  
+  var input = $("#password");
+  input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+});
+
+$(document).on('click', '.toggle-confirm-password', function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  
+  var input = $("#confirm_password");
+  input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+});
+
+$(document).on('click', '.toggle-user-password', function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  
+  var input = $("#user_password");
+  input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+});

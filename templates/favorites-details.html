@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} Details{% endblock %}
+
+{% block body %}
+    <h1>{{ asteroid.name }}</h1>
+
+    <a href='{{asteroid.nasa_jpl_url}}'>
+    Link to its official website
+    </a>
+
+    <p>
+    Is it hazardous:
+    </p>{{ asteroid.potentially_hazardous }}
+
+    <p>
+    Close approach date:
+    </p> {{ asteroid.close_approach_date }}
+
+    <p>
+    Relative Velocity in Kilometers:
+    </p> {{ asteroid.relative_velocity_kilometers_per_hour }}
+
+    <p>
+    Relative Velocity in Miles:
+    </p> {{ asteroid.relative_velocity_miles_per_hour }}
+
+    <p>
+    Orbiting body(planet):
+    </p> {{ asteroid.orbiting_body }}
+
+    <p>
+    Miss distance in kilometers:
+    </p> {{ asteroid.miss_distance_kilometers}}
+
+    <p>
+    Miss distance in miles:
+    </p> {{ asteroid.miss_distance_miles }}
+
+    <p>
+    Estimated diameter in kilometers:<br>
+    Min: {{ asteroid.estimated_diameter_kilometers_min }}<br>
+    Max: {{ asteroid.estimated_diameter_kilometers_max}}
+    </p>
+
+    <p>
+    Estimated diameter in miles:<br>
+    Min: {{ asteroid.estimated_diameter_miles_min }}<br>
+    Max: {{ asteroid.estimated_diameter_miles_max}}
+    </p>
+
+    <h1>Would you like to remove this from your journal?</h1>
+    <form action="/delete-favorites" method="POST">
+        <input type='text' name='asteroid_id' value= {{ asteroid.asteroid_id }} hidden>
+        <button class="btn btn-light">Yes</button>
+    </form>
+
+        
+
+{% endblock %}

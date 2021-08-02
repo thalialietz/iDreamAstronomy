@@ -18,10 +18,11 @@ class User(db.Model):
     lname = db.Column(db.String)
     email = db.Column(db.String, unique=True)
     password = db.Column(db.String)
+    
 
     def __repr__(self):
         return f'<User user_id={self.user_id} email={self.email} username={self.username}>'
-
+        
 
 class Favorite(db.Model):
     """Favorites Asteroids"""
@@ -63,6 +64,7 @@ class Asteroid(db.Model):
     estimated_diameter_kilometers_max = db.Column(db.Float)
     estimated_diameter_miles_min = db.Column(db.Float)
     estimated_diameter_miles_max = db.Column(db.Float)
+    
 
     def __repr__(self):
         return f'<Asteroid asteroid_id={self.asteroid_id} name={self.name} nasa_jpl_url={self.nasa_jpl_url}>'                   

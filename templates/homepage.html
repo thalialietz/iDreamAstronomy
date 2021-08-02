@@ -7,44 +7,91 @@
   <div class="container">
     <div class="forms-container">
       <div class="signin-signup">
-        <form action="/log-in" class="sign-in-form">
+        <form action="/log-in" class="sign-in-form" id="homepage-login-form">
           <h2 class="title">Log in</h2>
-          <div class="input-field">
-            <i class="fas fa-user-astronaut"></i>
-            <input type="text" placeholder="Username" name="user_username" required />
+          <div class="row">
+            <div class="col-7">
+              <div class="input-field">
+                <i class="fas fa-user-astronaut"></i>
+                <input type="text" placeholder="Username" name="user_username"  id="user_username" required />
+              </div>
+            </div>
+            <div class="col-5 d-flex align-items-center justify-content-center">
+              <input class="form-check-input" type="checkbox" id="rememberMe" value="lsRememberMe">
+              <label class="form-check-label" for="autoSizingCheck">
+                Remember me
+              </label>
+            </div>
           </div>
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" name="user_password" required/>
+          
+          <div class="row">
+            <div class="col-10">
+              <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" name="user_password" id="user_password" required/>
+              </div>
+            </div>
+            <div class="col-1 d-flex align-items-center justify-content-center">
+              <i toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-user-password"></i>
+            </div>
           </div>
-          <input type="submit" value="Login" class="btn btn-outline-primary" id="login-btn"/>
+          <input type="submit" value="Login" class="btn btn-outline-primary" id="login-btn" onclick="lsRememberMe()">
+          <div>
+            <a href="/forgot">
+              Forgot Your Password?
+            </a>
+          </div>
           <div class="form-group mt-2">
           </div>
         </form>
         
-        <form action="/users" method="POST" class="sign-up-form">
+        <form action="/users" method="POST" class="sign-up-form" id="homepage-signup-form">
           <h2 class="title">Sign up</h2>
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="First Name" name="fname" required/>
+          <div class="row">
+            <div class="col-12">
+              <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="First Name" name="fname" required/>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Last Name" name="lname" required/>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-field">
+                <i class="fas fa-user-astronaut"></i>
+                <input type="text" placeholder="Username" name="username" required/>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email" name="email" required/>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" name="password" id='password' required/>
+              </div>
+            </div>
+            <div class="col-1 d-flex align-items-center justify-content-center">
+              <i toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password"></i>
+            </div>
+            <div class="col-8">
+              <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Confirm Password" name="confirm_password" id='confirm_password' required/>
+              </div>
+            </div>
+            <div class="col-1 d-flex align-items-center justify-content-center">
+              <i toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-confirm-password"></i>
+            </div>
           </div>
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="Last Name" name="lname" required/>
-          </div>
-          <div class="input-field">
-            <i class="fas fa-user-astronaut"></i>
-            <input type="text" placeholder="Username" name="username" required/>
-          </div>
-          <div class="input-field">
-            <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Email" name="email" required/>
-          </div>
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" name="password" required/>
-          </div>
-          <input type="submit" class="btn btn-outline-primary" value="Sign up" />
+          <input type="submit" class="btn btn-outline-primary align-bottom" value="Sign up" />
         </form>
       </div>
     </div>

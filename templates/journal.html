@@ -8,8 +8,7 @@
   <ul>
     {% for favorite in favorites %}
       <li>
-          {{ favorite.asteroids.name }}
-        <a href="/asteroids/{{favorite.asteroids.api_asteroid_id}}" >
+        <a href="/my-journal/{{favorite.asteroids.api_asteroid_id}}" >{{ favorite.asteroids.name }}</a>
       </li>
     {% endfor %}
   </ul>

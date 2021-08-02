@@ -1,13 +1,28 @@
 from flask import (Flask, render_template, request, session,
                    redirect, url_for, flash)
-from model import db, connect_to_db
+from threading import Thread
+from model import db, User, connect_to_db
 import crud
 import os
 import requests
 import json
+from flask_mail import Message, Mail
+import jwt
+from datetime import datetime, timedelta
+from sqlalchemy import exc
+import random
+
 
 app = Flask(__name__)
 app.secret_key = 'SECRETSECRETSECRET'
+app.config['SECRET_KEY'] = str('flasksecretkey')
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'idreamastronomy@gmail.com'
+app.config['MAIL_PASSWORD'] = 'WebApp123'
+mail = Mail(app)
+
 
 API_KEY = os.environ['NASA_KEY']
 
@@ -27,8 +42,9 @@ def account_homepage():
 
     username = session.get('username')
 
+
     user = crud.get_user_by_username(username)
-        
+
     return render_template('profile.html', user=user)
 
 
@@ -41,6 +57,126 @@ def my_account_details():
     user = crud.get_user_by_username(username)
 
     return render_template('my-account.html', user=user)
+
+
+@app.route('/forgot')
+def forgot_password():
+
+    username = session.get('username')
+
+    if username in session:
+        return redirect('/profile')
+    
+    return render_template('forgot_password.html')
+
+
+def send_async_email(app, msg):
+    """Makes the send email function asynchronous, in order to happen in the background """
+    with app.app_context():
+        mail.send(msg)
+
+
+def send_email(subject, sender, recipients, text_body, html_body):
+    """Sends the email to user with a token"""
+    msg = Message(subject, sender=sender, recipients=recipients)
+    msg.body = text_body
+    msg.html = html_body
+    Thread(target=send_async_email, args=(app, msg)).start()
+
+    
+def send_password_reset_email(user):
+    """Creates a token for the user and request the email to be sent"""
+
+    email = request.form.get('email_reset_password')
+
+    user = crud.get_user_by_email(email)
+
+    secret = "jwt_secret"
+    payload = {"exp": datetime.utcnow() + timedelta(minutes=5), "user_id": user.user_id}
+    token = jwt.encode(payload, app.config['SECRET_KEY'], algorithm="HS256")
+
+
+    send_email('[iDreamAstronomy] Reset Your Password',
+               sender='idreamastronomy@gmail.com',
+                recipients=[user.email],
+               text_body=render_template('email/reset_password.txt',
+                                         user=user, token=token),
+               html_body=render_template('email/reset_password.html',
+                                         user=user, token=token))
+
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_password_handle():
+    """Handles the reset password form"""
+
+    username = session.get('username')
+
+    email = request.form.get('email_reset_password')
+
+    user = crud.get_user_by_email(email)
+
+    if user:
+        send_password_reset_email(user)
+        flash('Check your email for the instructions to reset your password')
+        return redirect('/')
+    if user is None:
+        flash("Sorry, we could not find this email in our database")
+
+    return redirect('/forgot')
+
+
+@app.route('/forgot/new_password/')
+def forgot_password_token():
+    """Handles the new password process after being reset"""
+
+
+    user_id = session.get('new_user_id')
+
+    user = crud.get_user_by_id(user_id)
+
+    if user is None:
+        return redirect('/reset_password')
+
+    if user:
+        return render_template('reset_password.html')
+
+
+@app.route('/forgot/change/<token>')
+def check_token_valid(token):
+    """Check if the token if valid or expired, and if its expired throws an error"""
+
+    try:
+        user_info = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"], verify_signature=True)
+        new_user_id = user_info['user_id']
+        session['new_user_id'] = new_user_id
+        return redirect(url_for('forgot_password_token'))
+
+    except jwt.ExpiredSignatureError:
+        flash("Invalid or Expired Token, please get a new one.")
+        return redirect('/')
+
+
+@app.route('/create-new-password', methods=['GET', 'POST'])
+def create_new_password():
+    """Creates a new password in database after being reset"""
+
+    user_id = session.get('new_user_id')
+
+    user = crud.get_user_by_id(user_id)
+
+    new_password = request.form.get('new_password')
+    new_password_conf = request.form.get('new_password_conf')
+
+    if new_password != new_password_conf:
+        flash("the passwords dont match")
+
+    if new_password == new_password_conf:
+        user.password = new_password
+        db.session.commit()
+        flash('Your password has been successfully changed. Please login')
+        return redirect('/')
+    
+    return redirect('/forgot/new_password/')
 
 
 @app.route('/change-password')
@@ -89,29 +225,54 @@ def change_account_info():
 
     user = crud.get_user_by_username(username)
 
+    users = crud.all_users()
+
     new_fname = request.args.get('new_fname')
 
     new_lname = request.args.get('new_lname')
 
     new_email = request.args.get('new_email')
 
+    new_username = request.args.get('new_username')
+
     if new_fname:
         user.fname = new_fname
         db.session.commit()
-        flash("The information you entered has been successfully updated!")
+        flash("Your first name has been successfully updated!")
         return redirect('/profile')
     if new_lname:
         user.lname = new_lname
         db.session.commit()
-        flash("The information you entered has been successfully updated!")
+        flash("Your last name has been successfully updated!")
         return redirect('/profile')
     if new_email:
-        user.email = new_email
-        db.session.commit()
-        flash("The information you entered has been successfully updated!")
-        return redirect('/profile')
+        try:
+            user.email = new_email
+            db.session.commit()
+            flash("Your email has been successfully updated!")
+            return redirect('/profile')
+        except exc.IntegrityError:
+            db.session.rollback()
+            flash("Sorry, the email you entered is not available")
+        
+    if new_username:
+        try:
+            user.username = new_username
+            db.session.commit()
+            flash("Your username has been successfully updated!")
+            return redirect('/profile')
+        except exc.IntegrityError:
+            db.session.rollback()
+            flash("Sorry, the username you entered is not available")
 
     return redirect('/change-acc-information')
+
+
+@app.route('/asteroids/selection')
+def show_asteroids_selection():
+    """Allows the user to select a date range to see asteroids"""
+
+    return render_template('asteroids_selection.html')
 
 
 @app.route("/asteroids")
@@ -183,7 +344,7 @@ def get_asteroid_details(api_asteroid_id):
 @app.route('/apod')
 def show_picture_of_the_day():
     """Show the astronomy picture of the day"""
-
+    
     date = request.args.get('apod_date')
 
     url = "https://api.nasa.gov/planetary/apod"
@@ -192,6 +353,32 @@ def show_picture_of_the_day():
     apod = res.json()
     
     return render_template('apod.html', apod=apod)
+
+
+@app.route("/delete-favorites", methods=["POST"])
+def delete_favorite():
+    """Deletes the favorite asteroid for that user"""
+
+    user_id = session.get('user_id')
+
+    user = crud.get_user_by_id(user_id)
+
+    asteroid_id = request.form.get('asteroid_id')
+    print("**********")
+    print("**********")
+    print("**********")
+    print(user)
+    print(asteroid_id)
+    print("**********")
+    print("**********")
+    print("**********")
+
+    crud.delete_asteroid_by_user_id(user_id, asteroid_id)
+    flash("This asteroid was successfully deleted!")
+    
+    return redirect('/my-journal')
+
+
 
 
 @app.route("/save-favorites", methods=["POST"])
@@ -240,6 +427,16 @@ estimated_diameter_miles_min=asteroid_details_dict['estimated_diameter_miles_min
     return redirect('/my-journal')
 
 
+@app.route("/my-journal/<int:api_asteroid_id>")
+def favorite_asteroid_details(api_asteroid_id):
+    """Display the favorite asteroids details"""
+
+    asteroid = crud.get_asteroid_by_api_id(api_asteroid_id)
+
+    return render_template('favorites-details.html', asteroid=asteroid)
+
+
+
 @app.route("/my-journal")
 def personal_journal():
     """Display favorites asteroids for that user"""
@@ -251,6 +448,12 @@ def personal_journal():
     return render_template('journal.html', favorites=favorites)
 
 
+@app.route("/solar-system")
+def solar_system():
+    """Shows a 3D animation of the solar system"""
+
+    return render_template("solar-system-animation.html")
+
 @app.route("/users", methods=['POST'])
 def register_user():
     """Registers a new user in the database"""
@@ -260,12 +463,15 @@ def register_user():
     lname = request.form.get('lname')
     email = request.form.get('email')
     password = request.form.get('password')
+    confirm_password = request.form.get('confirm_password')
 
     user = crud.get_user_by_username(username)
 
     if user:
         flash('Cannot create an account with that username and email. Try again')
-    else:
+    if password != confirm_password:
+        flash("The password dont match, try again")
+    if password == confirm_password:
         crud.create_user(username, fname, lname, email, password)
         flash('Account created! Please log in')
 
@@ -280,14 +486,14 @@ def log_user_in():
     password = request.args.get("user_password")
 
     user = crud.get_user_by_username(username)
-    
+
     if user and user.password == password:
         session['user_id'] = user.user_id
         session['username'] = username
         return redirect('/profile')
-    if user and user.password != password:
+    if user and user.password != password and user.password is not None:
         flash("Wrong password, try again!")
-    else:
+    if user is None:
         flash("No account found with this username, please create an account first.")
 
     return redirect('/')
