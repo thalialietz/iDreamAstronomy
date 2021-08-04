@@ -3,53 +3,43 @@
 {% block title %}{{ asteroid_details_dict.name }} - Details{% endblock %}
 
 {% block body %}
+<div class="row">
+  <div class="col-8">
     <h1>{{ asteroid_details_dict.name }}</h1>
+  </div>
+  <div class="col-4 d-flex flex-row-reverse align-items-center justify-content">
+    <form>
+      <a href="javascript:history.back()" class="btn btn-outline-dark">Go Back</a>
+    </form>
+  </div>
+</div>
 
-    <a href='{{asteroid_details_dict.nasa_jpl_url}}'>
-      Link to its official website
-    </a>
+    <p><a href='{{asteroid_details_dict.nasa_jpl_url}}' target="_blank">
+    Link to its official website
+    </a></p>
 
-    <p>
-      Is it hazardous:
-    </p>{{ asteroid_details_dict.potentially_hazardous }}
+    <p><b>Is it hazardous:</b> {{ asteroid_details_dict.potentially_hazardous }}</p>
 
-    <p>
-      Close approach date:
-    </p> {{ asteroid_details_dict.close_approach_date }}
+    <p><b>Close approach date:</b> {{ asteroid_details_dict.close_approach_date }}</p>
+    
+    <p><b>Relative Velocity in Kilometers:</b> {{ asteroid_details_dict.relative_velocity_kilometers_per_hour }}</p>
 
-    <p>
-      Relative Velocity in Kilometers:
-    </p> {{ asteroid_details_dict.relative_velocity_kilometers_per_hour }}
+    <p><b>Relative Velocity in Miles:</b> {{ asteroid_details_dict.relative_velocity_miles_per_hour }}</p>
 
-    <p>
-      Relative Velocity in Miles:
-    </p> {{ asteroid_details_dict.relative_velocity_miles_per_hour }}
+    <p><b>Orbiting body(planet):</b> {{ asteroid_details_dict.orbiting_body }}</p>
 
-    <p>
-      Orbiting body(planet):
-    </p> {{ asteroid_details_dict.orbiting_body }}
+    <p><b>Miss distance in kilometers:</b> {{ asteroid_details_dict.miss_distance_kilometers}}</p>
 
-    <p>
-      Miss distance in kilometers:
-    </p> {{ asteroid_details_dict.miss_distance_kilometers}}
+    <p><b>Miss distance in miles:</b> {{ asteroid_details_dict.miss_distance_miles }}</p>
 
-    <p>
-      Miss distance in miles:
-    </p> {{ asteroid_details_dict.miss_distance_miles }}
+    <p><b>Estimated diameter in kilometers</b><br>
+    <b>Min:</b> {{ asteroid_details_dict.estimated_diameter_kilometers_min }} <br>
+    <b>Max:</b> {{ asteroid_details_dict.estimated_diameter_kilometers_max}}</p>
+    
+    <p><b>Estimated diameter in miles</b><br>
+    <b>Min:</b> {{ asteroid_details_dict.estimated_diameter_miles_min }} <br>
+    <b>Max:</b> {{ asteroid_details_dict.estimated_diameter_miles_max}}</p>
 
-    <p>
-      Estimated diameter in kilometers:<br>
-      Min: {{ asteroid_details_dict.estimated_diameter_kilometers_min }}<br>
-      Max: {{ asteroid_details_dict.estimated_diameter_kilometers_max}}
-    </p>
-
-    <p>
-      Estimated diameter in miles:<br>
-      Min: {{ asteroid_details_dict.estimated_diameter_miles_min }}<br>
-      Max: {{ asteroid_details_dict.estimated_diameter_miles_max}}
-    </p>
-
-    <p>Would you like to add this asteroid to your journal?</p>
     
     <form action="/save-favorites" method="POST">
       <input type='text' name='api_asteroid_id' value= {{ asteroid_details_dict.api_asteroid_id }} hidden>
@@ -67,8 +57,7 @@
       <input type='text' name='estimated_diameter_miles_min' value={{ asteroid_details_dict.estimated_diameter_miles_min }} hidden>
       <input type='text' name='estimated_diameter_miles_max' value={{ asteroid_details_dict.estimated_diameter_miles_max }} hidden>
 
-      <input type="submit" value='Yes'>
+      <button class="btn btn-outline-dark">Click here to add this asteroid to your journal</button>
     </form>
     
-
 {% endblock %}

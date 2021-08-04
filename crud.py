@@ -1,6 +1,7 @@
 """CRUD operations."""
 
 from model import db, User, Favorite, Asteroid, connect_to_db
+from sqlalchemy import or_
 
 
 def create_user(username, fname, lname, email, password):
@@ -88,6 +89,11 @@ def get_user_by_email(email):
     """Returns a user by the user email"""
 
     return User.query.filter(User.email == email).first()
+
+def get_user_by_email_or_username(user_info):
+    """Returns a user by the user email or username"""
+
+    return User.query.filter(or_(User.email == user_info, User.username == user_info)).first()
 
 
 def delete_asteroid_by_user_id(user_id, asteroid_id):

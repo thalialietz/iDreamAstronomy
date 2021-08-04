@@ -3,13 +3,23 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<h1>All Favorites</h1>
-
+<div class="row">
+  <div class="col-8">
+    <h1>My Journal</h1>
+  </div>
+  
+  <div class="col-4 d-flex flex-row-reverse align-items-center justify-content">
+    <form>
+      <a href="javascript:history.back()" class="btn btn-outline-dark">Go Back</a>
+    </form>
+  </div>
+</div>
   <ul>
     {% for favorite in favorites %}
       <li>
-        <a href="/my-journal/{{favorite.asteroids.api_asteroid_id}}" >{{ favorite.asteroids.name }}</a>
+        <a href="/my-journal/{{favorite.asteroids.api_asteroid_id}}" class="btn btn-link btn-md" >{{ favorite.asteroids.name }}</a>
       </li>
     {% endfor %}
   </ul>
+
 {% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %} Details{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-8">
+    <h1>{{ asteroid.name }}</h1>
+    </div>
+    <div class="col-4 d-flex flex-row-reverse align-items-center justify-content">
+    <form>
+    <a href="javascript:history.back()" class="btn btn-outline-dark">Go Back</a>
+    </form>
+    </div>
+</div>
+    
+
+    <p><a href='{{asteroid.nasa_jpl_url}}' target="_blank">
+    Link to its official website
+    </a></p>
+
+    <p><b>Is it hazardous:</b> {{ asteroid.potentially_hazardous }}</p>
+
+    <p><b>Close approach date:</b> {{ asteroid.close_approach_date }}</p>
+    
+    <p><b>Relative Velocity in Kilometers:</b> {{ asteroid.relative_velocity_kilometers_per_hour }}</p>
+
+    <p><b>Relative Velocity in Miles:</b> {{ asteroid.relative_velocity_miles_per_hour }}</p>
+
+    <p><b>Orbiting body(planet):</b> {{ asteroid.orbiting_body }}</p>
+
+    <p><b>Miss distance in kilometers:</b> {{ asteroid.miss_distance_kilometers}}</p>
+
+    <p><b>Miss distance in miles:</b> {{ asteroid.miss_distance_miles }}</p>
+
+    <p><b>Estimated diameter in kilometers</b><br>
+    <b>Min:</b> {{ asteroid.estimated_diameter_kilometers_min }} <br>
+    <b>Max:</b> {{ asteroid.estimated_diameter_kilometers_max}}</p>
+    
+    <p><b>Estimated diameter in miles</b><br>
+    <b>Min:</b> {{ asteroid.estimated_diameter_miles_min }} <br>
+    <b>Max:</b> {{ asteroid.estimated_diameter_miles_max}}</p>
+
+
+    <h4>Would you like to remove this from your journal?</h4>
+    <form>
+        <input type='text' name='asteroid_id' value= {{ asteroid.asteroid_id }} hidden>
+        <button class="btn btn-outline-dark" formaction="/delete-favorites" formmethod="post">Yes</button>
+        <button formaction="/my-journal" class="btn btn-outline-dark">No</button>
+    </form>
+    
+
+        
+
+{% endblock %}
