@@ -4,22 +4,33 @@
 
 {% block body %}
     <h1>{{ apod.title }}</h1>
-    <p>
-    <b>
-      Photographer:
-    </b>{{ apod.copyright }}</p>
+    {% if 'copyright' in apod %}
+    <p><b>Photographer: </b>{{ apod.copyright }}</p>
+    {% else %}
+    {% endif %}
 
-    <p>
-    <b>
-      Date: 
-    </b>{{apod.date}}</p>
+    <p><b>Date: </b>{{apod.date}}</p>
 
-    <p>
-    <b>
-      Explanation: 
-    </b>{{apod.explanation}}</p>
+    <p><b>Explanation: </b>{{apod.explanation}}</p>
 
-    <img src="{{ apod.url }}">
+    {% if apod.media_type == 'image' %}
+    <img src="{{ apod.url }}" width = "800" height = "730">
+    {% elif apod.media_type == 'video' %}
+    <a href="{{apod.url}}" target="_blank" >Please click here to see the interactive image!</a>
+
+    {% endif %}
+
+
+    <div>    
+      <h2>Would you like to see the Astronomy picture for another day>?</h2>
+      <form action="/apod">
+          <label for="apod_selection">Date:</label>
+          <input type="date" id="apod_date" name="apod_date" min="1995-06-16" required>
+          <input type="submit">
+      </form>
+    </div>
+
+
     
     
 {% endblock %}

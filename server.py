@@ -59,15 +59,6 @@ def my_account_details():
     return render_template('my-account.html', user=user)
 
 
-@app.route('/forgot')
-def forgot_password():
-
-    username = session.get('username')
-
-    if username in session:
-        return redirect('/profile')
-    
-    return render_template('forgot_password.html')
 
 
 def send_async_email(app, msg):
@@ -87,10 +78,6 @@ def send_email(subject, sender, recipients, text_body, html_body):
 def send_password_reset_email(user):
     """Creates a token for the user and request the email to be sent"""
 
-    email = request.form.get('email_reset_password')
-
-    user = crud.get_user_by_email(email)
-
     secret = "jwt_secret"
     payload = {"exp": datetime.utcnow() + timedelta(minutes=5), "user_id": user.user_id}
     token = jwt.encode(payload, app.config['SECRET_KEY'], algorithm="HS256")
@@ -104,6 +91,16 @@ def send_password_reset_email(user):
                html_body=render_template('email/reset_password.html',
                                          user=user, token=token))
 
+@app.route('/forgot')
+def forgot_password():
+
+    username = session.get('username')
+
+    if username in session:
+        return redirect('/profile')
+    
+    return render_template('forgot_password.html')
+
 
 @app.route('/reset_password', methods=['GET', 'POST'])
 def reset_password_handle():
@@ -111,9 +108,9 @@ def reset_password_handle():
 
     username = session.get('username')
 
-    email = request.form.get('email_reset_password')
+    user_info = request.form.get('user_info_reset_password')
 
-    user = crud.get_user_by_email(email)
+    user = crud.get_user_by_email_or_username(user_info)
 
     if user:
         send_password_reset_email(user)
@@ -128,7 +125,6 @@ def reset_password_handle():
 @app.route('/forgot/new_password/')
 def forgot_password_token():
     """Handles the new password process after being reset"""
-
 
     user_id = session.get('new_user_id')
 
@@ -156,7 +152,7 @@ def check_token_valid(token):
         return redirect('/')
 
 
-@app.route('/create-new-password', methods=['GET', 'POST'])
+@app.route('/forgot/change/new_password/', methods=['GET', 'POST'])
 def create_new_password():
     """Creates a new password in database after being reset"""
 
@@ -168,7 +164,7 @@ def create_new_password():
     new_password_conf = request.form.get('new_password_conf')
 
     if new_password != new_password_conf:
-        flash("the passwords dont match")
+        flash("The passwords do not match")
 
     if new_password == new_password_conf:
         user.password = new_password
@@ -198,8 +194,10 @@ def change_current_password():
 
     new_password = request.args.get('new_password')
 
+    repeat_new_password = request.args.get('repeat_new_password')
+
     if user.password != current_password:
-        flash("The password you entered does not match our records, please try again")
+        flash("The password you entered does not match our records, please try again or reset your password")
     if user.password == current_password:
         user.password = new_password
         db.session.commit()
@@ -364,21 +362,11 @@ def delete_favorite():
     user = crud.get_user_by_id(user_id)
 
     asteroid_id = request.form.get('asteroid_id')
-    print("**********")
-    print("**********")
-    print("**********")
-    print(user)
-    print(asteroid_id)
-    print("**********")
-    print("**********")
-    print("**********")
 
     crud.delete_asteroid_by_user_id(user_id, asteroid_id)
     flash("This asteroid was successfully deleted!")
     
     return redirect('/my-journal')
-
-
 
 
 @app.route("/save-favorites", methods=["POST"])
@@ -433,8 +421,7 @@ def favorite_asteroid_details(api_asteroid_id):
 
     asteroid = crud.get_asteroid_by_api_id(api_asteroid_id)
 
-    return render_template('favorites-details.html', asteroid=asteroid)
-
+    return render_template('journal-details.html', asteroid=asteroid)
 
 
 @app.route("/my-journal")
@@ -453,6 +440,7 @@ def solar_system():
     """Shows a 3D animation of the solar system"""
 
     return render_template("solar-system-animation.html")
+
 
 @app.route("/users", methods=['POST'])
 def register_user():

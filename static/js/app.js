@@ -51,7 +51,7 @@ localStorage.checkbox = "";
 }
 }
 
-$(document).on('click', '.toggle-pasçsword', function() {
+$(document).on('click', '.toggle-password', function() {
 
   $(this).toggleClass("fa-eye fa-eye-slash");
   
@@ -73,4 +73,8 @@ $(document).on('click', '.toggle-user-password', function() {
   
   var input = $("#user_password");
   input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+});
+
+$(document).ready(function() {
+  $('.carousel').carousel({interval: 7000});
 });

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}All Asteroids{% endblock %}
 {% block body %}
-<h1>All Asteroids</h1>
+<h1>Asteroids</h1>
 
   <ul>
     {% for asteroid in list_of_asteroids %}
@@ -23,7 +23,7 @@
             <input type='text' name='estimated_diameter_miles_min' value={{ asteroid.estimated_diameter_miles_min }} hidden>
             <input type='text' name='estimated_diameter_miles_max' value={{ asteroid.estimated_diameter_miles_max }} hidden>
 
-            <input type="submit" value='{{ asteroid.name }}'>
+            <input type="submit" class="btn btn-link btn-sm"  value='{{ asteroid.name }}'>
           </form>
 
 
