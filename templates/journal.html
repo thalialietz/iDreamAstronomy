@@ -3,23 +3,47 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<div class="row">
-  <div class="col-8">
-    <h1>My Journal</h1>
+<div class="box-area">
+  <div class="banner-area">
+    <h2>My Journal</h2>
   </div>
-  
-  <div class="col-4 d-flex flex-row-reverse align-items-center justify-content">
-    <form>
-      <a href="javascript:history.back()" class="btn btn-outline-dark">Go Back</a>
-    </form>
+  <div class="content-area">
+    <div class="wrapper">
+      <div class="row">
+        <div class="col-5 list-group" id="asteroids_list">
+          <ul style="height:610px; width:100%; overflow:hidden; overflow-y:scroll; font-size: medium; margin-top:30px;">
+            {% for favorite in favorites %}
+              <a class="list-group-item list-group-item-action" href="/my-journal/{{favorite.asteroids.api_asteroid_id}}" class="btn btn-link btn-md" 
+              title="Click for more details about this asteroid">{{ favorite.asteroids.name }}</a>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-7">
+          <video controls autoplay muted>
+            <source src="/static/img/bennu_asteroid.mp4" type="video/mp4">
+          </video>
+          <div id="video_subtitle">
+            <h2>Asteroid Bennu: Selecting Site Nightingale</h2>
+            <p>OSIRIS-REx is a NASA mission to explore near-Earth asteroid Bennu and return a sample to Earth. 
+              Prior to arriving at Bennu, mission planners had expected the asteroid’s surface to consist largely of fine particulate material, 
+              similar to gravel. When OSIRIS-REx arrived in December 2018, however, 
+              it was greeted by a rocky world covered with boulders. This unexpected ruggedness means that there are few places on 
+              Bennu where OSIRIS-REx can safely touch down and collect a sample. After a year of studying the asteroid, 
+              the mission announced a primary sample collection site, which they designated “Nightingale,”
+              along with a backup site called “Osprey.” 
+              In October 2020, OSIRIS-REx will descend to Bennu and attempt to collect up to four-and-a-half pounds of loose material, 
+              for return to Earth in 2023. Full resolution image available <a href="https://svs.gsfc.nasa.gov/13565">here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-  <ul>
-    {% for favorite in favorites %}
-      <li>
-        <a href="/my-journal/{{favorite.asteroids.api_asteroid_id}}" class="btn btn-link btn-md" >{{ favorite.asteroids.name }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+
+<script>
+  $( function() {
+    $( document ).tooltip();
+  } );
+</script>
 
 {% endblock %}

@@ -3,18 +3,26 @@
 {% block title %}iDreamAstronomy{% endblock %}
 
 {% block body %}
-<div class="my-account">
-    <h2>What would you like to change in your account?</h2>
-    <div class="row">
-        <div class="col-4">
-            <a href="/change-password" class="btn btn-link">Change your password</a>
+<div class="box-area">
+    <div class="banner-area">
+        <h2>my account</h2>
+    </div>
+    <div class="content-area">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-5 " style="margin-top:80px;">
+                    <i class="fas fa-lock"></i>
+                    <a href="/change-password" class="btn btn-link" id="asteroid-link">Change your password</a>
+                    <br>
+                    <i class="fas fa-user-astronaut"></i>
+                    <a href="/change-account-info" class="btn btn-link" id="asteroid-link">Change account information</a>
+                </div>
+                <div class="col-7">
+                    <img src="/static/img/to_the_moon.svg" width = "650" height = "590">
+                </div>
+            </div>
+            
         </div>
     </div>
-    <div class="row">
-        <div class="col-4">
-            <a href="/change-account-info" class="btn btn-link">Change account information</a>
-        </div>
-    </div>
-
 </div>
 {% endblock %}

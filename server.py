@@ -59,8 +59,6 @@ def my_account_details():
     return render_template('my-account.html', user=user)
 
 
-
-
 def send_async_email(app, msg):
     """Makes the send email function asynchronous, in order to happen in the background """
     with app.app_context():
@@ -435,11 +433,11 @@ def personal_journal():
     return render_template('journal.html', favorites=favorites)
 
 
-@app.route("/solar-system")
-def solar_system():
-    """Shows a 3D animation of the solar system"""
+@app.route("/about")
+def about():
+    """Displays the about the developer section"""
 
-    return render_template("solar-system-animation.html")
+    return render_template("about.html")
 
 
 @app.route("/users", methods=['POST'])

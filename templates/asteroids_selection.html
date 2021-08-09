@@ -1,27 +1,43 @@
 {% extends 'base.html' %}
-{% block title %}Asteroids Selection{% endblock %}
+{% block title %}{% endblock %}
 {% block body %}
-<div>
-    
-    <form >
-    </form>
-</div>
-<form action="/asteroids">
-    <h2>What dates would you like to see asteroids from?</h2>
-    <div class="row">
-        <div class="col-sm-3 my-1">
-            <label for="asteroids_selection">Start Date:</label>
-            <input type="date" class="form-control" id="asteroid_start_date" name="asteroid_start_date" min="" required>
-        </div>
-        <div class="col-sm-3 my-1">
-            <label for="asteroids_selection">End Date:</label>
-            <input type="date" class="form-control" id="asteroid_end_date" name="asteroid_end_date" min="" required>        
-        </div>
-        
+<div class="box-area">
+    <div class="banner-area">
+        <h2>Asteroids</h2>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-</form>
+    <div class="content-area">
+        <div class="wrapper">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-5">
+                    <h1>Select dates to see asteroids that are orbiting Earth</h1>
+                    <form action="/asteroids">
+                    <div class="col-6" style="margin-left:125px;">
+                        <label for="asteroids_selection">Start Date:</label>
+                        <input type="date" class="form-control" id="asteroid_start_date" name="asteroid_start_date" min="" class="asteroid_dates" required>
+                    </div>
+                    <div class="col-6" style="margin-left:125px;">
+                        <label for="asteroids_selection">End Date:</label>
+                        <input type="date" class="form-control" id="asteroid_end_date" name="asteroid_end_date" min="" class="asteroid_dates" required>        
+                    </div>
+                    <br>
+                    <button type="submit" class="ui primary button">Submit</button>
+                    </form>
+                </div>
+                <div class="col-7">
+                    <video controls autoplay muted>
+                        <source src="/static/img/spot_near_asteroids.mp4" type="video/mp4">
+                    </video>
+                    <div id="video_subtitle" style="overflow:hidden;">
+                        <h2>How Do We Spot Near Earth Asteroids</h2>
+                        <p>Animation illustrates how near-Earth asteroids are detected by professional astronomers 
+                            with the help of amateur astronomers and how our knowledge of their path is refined 
+                            to determine if they might be a threat to Earth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 
