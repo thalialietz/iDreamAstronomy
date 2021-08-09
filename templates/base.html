@@ -3,12 +3,17 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  
+  
   <link rel="icon" type="image" href="/static/img/iDreamAstronomy_logo.png">
   <script
     src="https://kit.fontawesome.com/64d58efce2.js"
@@ -22,9 +27,12 @@
   <link rel="stylesheet" href="/static/css/styles.css" />
 </head>
 <body>
-  <header>
+  <div id="bg">
+    <img src="/static/img/background.jpg">
+  </div>
     {% if 'username' in session %}
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div id="navbar">
+      <nav class="navbar navbar-expand-lg py-5 navbar-dark bg-dark ">
         <div class="container-fluid">
           <a class="navbar-brand">
             <img src="/static/img/iDreamAstronomy_logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -34,7 +42,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/profile">Home</a>
               </li>
@@ -48,7 +56,7 @@
                 <a class="nav-link" href="/apod">Astronomy Picture of the Day</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/solar-system">3D Solar System</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
             </ul>
             <span class="nav-item">
@@ -59,11 +67,12 @@
             </span>
           </div>
         </div>
+      
       </nav>
+    </div>
     {% endif %}
    
   {% block body %}{% endblock %}
-  </header>
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <script>
@@ -74,6 +83,9 @@
       </script>
     {% endif %}
   {% endwith %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
 </body>
 </html>

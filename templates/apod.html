@@ -3,34 +3,62 @@
 {% block title %}{{ apod.title }} - Details{% endblock %}
 
 {% block body %}
-    <h1>{{ apod.title }}</h1>
-    {% if 'copyright' in apod %}
-    <p><b>Photographer: </b>{{ apod.copyright }}</p>
-    {% else %}
-    {% endif %}
+<div class="box-area">
+  <div class="banner-area">
+      <h2>Astronomy Picture of the day</h2>
+  </div>
+  <div class="content-area">
+    <div class="wrapper">
+      <div class="row align-items-center justify-content-center" style="margin-top:20px;">
+        <div class="col-5">
+          <ul class="list-group list-group-flush" style="background-color: #ebebeb;">
+            <h2 style="background-color: #ebebeb; font-size: xx-large;">{{ apod.title }}</h2>
+            {% if 'copyright' in apod %}
+            <li class="list-group-item" style="background-color: #ebebeb; margin-top:20px; text-align: left;">
+              <b>Photographer: </b>{{ apod.copyright }}
+            </li>{% else %}
+            <li class="list-group-item" style="background-color: #ebebeb; margin-top:20px; text-align: left;">
+              <b>Photographer: </b>Not available
+            </li>
+            {% endif %}
+            <li class="list-group-item" style="background-color: #ebebeb; text-align: left;"><b>Date: </b>{{apod.date}}</li>
+            <li class="list-group-item" style="background-color: #ebebeb; text-align: left;"><b>Explanation: </b>{{apod.explanation}}</li>
+          </ul>
+          <br>
+          <form action="/apod">
+              <label for="apod_selection" style="font-weight:bold; font-size: medium;">Select date to see a picture from a past day</label>
+              <input type="date" id="apod_date" name="apod_date" min="1995-06-16" required style="margin-left:170px;">
+              <br>
+              <input type="submit" class="ui primary button">
+          </form>
+        </div>
+        <div class="col-7">
+          {% if apod.media_type == 'image' %}
+          <img src="{{ apod.url }}" width = "650" height = "590" >
+          {% elif apod.media_type == 'video' %}
+          <a href="{{apod.url}}" target="_blank" id="asteroid-link" >Click here to see the interactive image!</a>
+          {% endif %}
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>
 
-    <p><b>Date: </b>{{apod.date}}</p>
+<script>
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+  if(dd<10){
+          dd='0'+dd
+      } 
+      if(mm<10){
+          mm='0'+mm
+      } 
 
-    <p><b>Explanation: </b>{{apod.explanation}}</p>
-
-    {% if apod.media_type == 'image' %}
-    <img src="{{ apod.url }}" width = "800" height = "730">
-    {% elif apod.media_type == 'video' %}
-    <a href="{{apod.url}}" target="_blank" >Please click here to see the interactive image!</a>
-
-    {% endif %}
-
-
-    <div>    
-      <h2>Would you like to see the Astronomy picture for another day>?</h2>
-      <form action="/apod">
-          <label for="apod_selection">Date:</label>
-          <input type="date" id="apod_date" name="apod_date" min="1995-06-16" required>
-          <input type="submit">
-      </form>
-    </div>
+  today = yyyy+'-'+mm+'-'+dd;
+  document.getElementById("apod_date").setAttribute("max", today);
 
 
-    
-    
+</script>
 {% endblock %}
