@@ -90,13 +90,30 @@ b {
   text-decoration: underline;
 }
 
-#navbar {
+.navbar {
   width: 70%;
-  height: 200px;
   margin-right:30px;
   margin-left: 275px;
   position: absolute;
+  font-size: 22px;
+}
+
+#navbarDropdown {
+  padding-bottom: 2rem;
+  color: rgba(255,255,255,.55);
+}
+.nav-item-dropdown {
+  text-align: center !important;
+}
+.navbar-brand {
   font-size: 20px;
+}
+.navbar-brand img {
+  width: 35px;
+  height:28px;
+}
+.nav-item {
+  margin-left: 25px;
 }
 
 .wrapper {
@@ -190,6 +207,99 @@ input[type="date"] {
   text-align: center;
 }
 
+.video_info {
+  overflow: hidden !important;
+}
+
+.forgot-banner-area {
+	width: 70%;
+	height: 200px;
+  margin-right:30px;
+  margin-left: 275px;
+	position: absolute;
+	background-image: url(/static/img/asteroid_header.jpeg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+.forgot-banner-area h2 {
+	padding-top: 3%;
+	font-size: 70px;
+	text-transform: uppercase;
+	color: #fff;
+  text-align: center;
+}
+
+.forgot-content-area {
+	position: absolute;
+	top: 200px;
+	background: #ebebeb;
+	min-height: 700px;
+  width:70%; 
+  margin-right:30px;
+  margin-left: 275px;
+}
+.forgot-content-area h2 {
+	letter-spacing: 4px;
+	padding-top: 30px;
+	font-size: 40px;
+	margin: 0;
+}
+.forgot-content-area p {
+	padding: 2% 0px;
+	font-family: poppins;
+	line-height: 30px;
+}
+
+.forgot-input-field {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  margin-left: 380px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+.forgot-input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: #131212;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+.forgot-input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+.forgot-input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+.form-forgot-password {
+  align-items: center;
+  
+}
+
+.change-password {
+  margin-top: 50px;
+
+}
+
+#about-accordion {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  margin-top: 50px;
+}
 /* Extra small devices (phones, 600px and down) */
 /* @media only screen and (max-width: 600px) {
   video {

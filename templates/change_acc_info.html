@@ -5,34 +5,44 @@
 {% block body %}
 <div class="box-area">
     <div class="banner-area">
-        <h2>my account</h2>
+        <h2>Account information</h2>
     </div>
     <div class="content-area">
         <div class="wrapper">
-            <h4>Please fill out only what you intend to change</h4>
-            <form action="/change-account-info" class="change-acc-info">
+            <h3 style="margin-top:20px;">Please fill out only what you intend to change</h3>
+            <h4>Leave the ones you don't intend to change empty</h4>
+            <div class="row">
+                <form action="/change-account-info" class="change-acc-info">
+                    <div class="col-3" style="margin-left: 450px;">
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="New First Name" id="new_fname" name="new_fname">
+                        </div>
+                    </div>
 
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="New First Name" id="new_fname" name="new_fname">
-                </div>
+                    <div class="col-3" style="margin-left: 450px;">
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="New Last Name" id="new_lname" name="new_lname" >
+                        </div>
+                    </div>
 
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="New Last Name" id="new_lname" name="new_lname" >
-                </div>
+                    <div class="col-3" style="margin-left: 450px;">
+                        <div class="input-field">
+                            <i class="fas fa-user-astronaut"></i>
+                            <input type="text" id="new_username" name="new_username" placeholder="New Username">
+                        </div>
+                    </div>
 
-                <div class="input-field">
-                    <i class="fas fa-user-astronaut"></i>
-                    <input type="text" id="new_username" name="new_username" placeholder="New Username">
-                </div>
-
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email-address" placeholder="New Email" id="new_email" name="new_email" >
-                </div>
-                <button class="btn btn-primary">Submit</button>
-            </form>
+                    <div class="col-3" style="margin-left: 450px;">
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email-address" placeholder="New Email" id="new_email" name="new_email" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <button class="ui primary button" style="margin-left: 35px;">Submit</button>
         </div>
     </div>
 </div>

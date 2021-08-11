@@ -23,8 +23,8 @@ app.config['MAIL_USERNAME'] = 'idreamastronomy@gmail.com'
 app.config['MAIL_PASSWORD'] = 'WebApp123'
 mail = Mail(app)
 
-
 API_KEY = os.environ['NASA_KEY']
+
 
 @app.route('/')
 def homepage():
@@ -41,7 +41,6 @@ def account_homepage():
     """Show account homepage"""
 
     username = session.get('username')
-
 
     user = crud.get_user_by_username(username)
 
@@ -80,7 +79,6 @@ def send_password_reset_email(user):
     payload = {"exp": datetime.utcnow() + timedelta(minutes=5), "user_id": user.user_id}
     token = jwt.encode(payload, app.config['SECRET_KEY'], algorithm="HS256")
 
-
     send_email('[iDreamAstronomy] Reset Your Password',
                sender='idreamastronomy@gmail.com',
                 recipients=[user.email],
@@ -89,8 +87,10 @@ def send_password_reset_email(user):
                html_body=render_template('email/reset_password.html',
                                          user=user, token=token))
 
+
 @app.route('/forgot')
 def forgot_password():
+    """Shows the form to ask for the user username or email to request a new password"""
 
     username = session.get('username')
 
