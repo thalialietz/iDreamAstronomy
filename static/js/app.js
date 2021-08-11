@@ -41,21 +41,7 @@ $('#homepage-login-form').on('submit', function() {
       localStorage.password = '';
       localStorage.checkBoxValidation = '';
   }
-
-  //Other form functions
 });
-
-function submit()
-{
-   var username = document.getElementById("user_username").value;
-   localStorage.setItem( "username", username );
-   return false;
-}
-
-window.onload = function()
-{
-   document.getElementById( "user_username" ).value = localStorage.getItem( "username" );
-}
 
 $(document).on('click', '.toggle-password', function() {
 
