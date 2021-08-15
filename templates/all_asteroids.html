@@ -9,7 +9,7 @@
     <div class="wrapper">
       <div class="row">
         <div class="col-5 list-group" id="asteroids_list">
-          <ul style="height:610px; width:100%; overflow:hidden; overflow-y:scroll; font-size: medium; margin-top:30px;">
+          <ul>
             {% for asteroid in list_of_asteroids %}
             <form action='/asteroids/{{ asteroid.api_asteroid_id }}'>
               <input type='text' name='api_asteroid_id' value= {{ asteroid.api_asteroid_id }} hidden>

@@ -16,114 +16,16 @@ input {
 b {
   font-weight: bold;
 }
-
-.input-field {
-  max-width: 380px;
-  width: 100%;
-  background-color: #f0f0f0;
-  margin: 10px 0;
-  height: 55px;
-  border-radius: 55px;
-  display: grid;
-  grid-template-columns: 15% 85%;
-  padding: 0 0.4rem;
-  position: relative;
-  
-}
-#homepage-user-input-field {
-  margin-left: 80px;
-}
-
-
-.input-field i {
-  text-align: center;
-  line-height: 55px;
-  color: #131212;
-  transition: 0.5s;
-  font-size: 1.1rem;
-}
-
-#homepage_video_subtitle p, 
-#homepage_video_subtitle h5 {
-  margin-top:-30px;
-  margin-left: 30px;
-  width: 80%;
-}
-#homepage_video_subtitle video {
-  width:60%;
-  height:80%;
-  margin-top:-30px;
-  margin-left: -200px;
-}
-.input-field input {
-  background: none;
-  outline: none;
-  border: none;
-  line-height: 1;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.input-field input::placeholder {
-  color: #aaa;
-  font-weight: 500;
-}
-
-#bg {
-  position: fixed; 
-  top: -50%; 
-  left: -50%; 
-  width: 200%; 
-  height: 200%;
-  z-index: -1;
-}
-
-#bg img {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
-  margin: auto; 
-  min-width: 50%;
-  min-height: 50%;
-}
-
-.website-content {
-  background-color: white;
-  align-items: center;
-  text-align: center;
-  list-style-position: inside;
-}
-
-#asteroid-link {
-  color:black;
-  text-decoration: none;
-}
-
-#asteroid-link:hover {
-  text-decoration: underline;
-}
-
+/* Navbar start */
 .navbar {
+  z-index: 1;
   width: 70%;
   margin-right:30px;
   margin-left: 275px;
-  position: absolute;
-  font-size: 22px;
 }
-.navbar-collapse {
-  position: absolute;
-  width: 100%;
-  background-color: #222222; //background color of the navigation bar
- }
 #navbarDropdown{
   padding-bottom: 2rem;
   color: rgba(255,255,255,.55);
-}
-.nav-item-dropdown {
-  text-align: center !important;
 }
 .navbar-brand {
   font-size: 20px;
@@ -134,8 +36,8 @@ b {
 }
 .nav-item {
   margin-left: 25px;
+  font-size:18px;
 }
-
 .dropdown-menu {
   background-color: #212529 !important;
   color:#212529 !important;
@@ -150,7 +52,9 @@ a.dropdown-item:active {
   color: white !important;
   opacity: 80% !important;
 }
+/* Navbar end */
 
+/* Wrapper for all pages start */
 .wrapper {
 	width: 1170px;
 	margin: 0 auto;
@@ -158,101 +62,9 @@ a.dropdown-item:active {
 .wrapper h3 {
   margin-top:20px;
 }
-header {
-	height: 100px;
-	background: #262626;
-	width: 100%;
-	z-index: 10;
+/* Wrapper for all pages end */
 
-}
-video {
-  margin-top: 30px;
-}
-
-#video_subtitle {
-  font-size: 15px;
-  overflow:scroll;
-  height: 250px;
-  width: 95%;
-  margin-left:15px;
-}
-
-.content-area .col-7 img {
-  width:650px;
-  height: 590px;
-}
-#asteroids_list {
-  text-align: center;
-  justify-content: center;
-}
-#asteroids_list ul {
-  height:610px; 
-  width:100%; 
-  overflow:hidden; 
-  overflow-y:scroll; 
-  font-size: medium; 
-  margin-top:30px;
-}
-
-.banner-area {
-	width: 70%;
-	height: 200px;
-  margin-right:30px;
-  margin-left: 275px;
-	position: absolute;
-	top: 100px;
-	background-image: url(/static/img/asteroid_header.jpeg);
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: center center;
-}
-.banner-area h2 {
-	padding-top: 3%;
-	font-size: 70px;
-	text-transform: uppercase;
-	color: #fff;
-  text-align: center;
-}
-
-.content-area {
-	position: absolute;
-	top: 300px;
-	background: #ebebeb;
-	min-height: 700px;
-  width:70%; 
-  margin-right:30px;
-  margin-left: 275px;
-}
-.content-area h2 {
-	letter-spacing: 4px;
-	padding-top: 30px;
-	font-size: 40px;
-	margin: 0;
-}
-.content-area p {
-	padding: 2% 0px;
-	font-family: poppins;
-	line-height: 30px;
-}
-
-.about-banner-area {
-	width: 70%;
-	height: 200px;
-  margin-right:30px;
-  margin-left: 275px;
-	position: absolute;
-	background-image: url(/static/img/asteroid_header.jpeg);
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: center center;
-}
-.about-banner-area h2 {
-	padding-top: 3%;
-	font-size: 70px;
-	text-transform: uppercase;
-	color: #fff;
-  text-align: center;
-}
+/* Apod Page start*/
 #apod_info h2 {
   background-color: #ebebeb;
   font-size: xx-large;
@@ -272,6 +84,102 @@ video {
 }
 #apod_date {
   margin-left:170px;
+}
+#apod_img img {
+  width:650px;
+  height: 590px;
+}
+/* Apod Page end */
+
+/* All Asteroids Page start*/
+#asteroids_list {
+  text-align: center;
+  justify-content: center;
+}
+#asteroids_list ul {
+  height:610px; 
+  width:100%; 
+  overflow:hidden; 
+  overflow-y:scroll; 
+  font-size: medium; 
+  margin-top:30px;
+}
+/* All Asteroids Page end */
+
+/* Banner for all pages start */
+.banner-area {
+	width: 70%;
+  margin-right:30px;
+  margin-left: 275px;
+	height: 200px;
+	position: absolute;
+	top: 80px;
+	background-image: url(/static/img/asteroid_header.jpeg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+.banner-area h2 {
+	padding-top: 3%;
+	font-size: 70px;
+	text-transform: uppercase;
+	color: #fff;
+  text-align: center;
+}
+/* Banner for all pages end */
+
+/* Content Area for all Pages except homepage start */
+.content-area {
+	position: absolute;
+	top: 280px;
+	background: #ebebeb;
+	min-height: 700px;
+  width:70%; 
+  margin-right:30px;
+  margin-left: 275px;
+}
+.content-area h2 {
+	letter-spacing: 4px;
+	padding-top: 30px;
+	font-size: 40px;
+	margin: 0;
+}
+.content-area p {
+	padding: 2% 0px;
+	font-family: poppins;
+	line-height: 30px;
+}
+video {
+  margin-top: 30px;
+}
+#video_subtitle {
+  font-size: 15px;
+  overflow:scroll;
+  overflow-x:hidden;
+  height: 250px;
+  width: 95%;
+  margin-left:15px;
+}
+/* Content Area for all Pages except homepage start */
+
+/* About with No Login */
+.about-banner-area {
+	width: 70%;
+	height: 200px;
+  margin-right:30px;
+  margin-left: 275px;
+	position: absolute;
+	background-image: url(/static/img/asteroid_header.jpeg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+.about-banner-area h2 {
+	padding-top: 3%;
+	font-size: 70px;
+	text-transform: uppercase;
+	color: #fff;
+  text-align: center;
 }
 
 .about-content-area {
@@ -294,7 +202,6 @@ video {
 	font-family: poppins;
 	line-height: 30px;
 }
-
 #about-nologin-accordion {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
@@ -303,7 +210,9 @@ video {
   margin-left: 90px;
   width: 87%;
 }
+/* About with No Login */
 
+/* Copyright Link on landing page */
 #copyright_link {
   color: black;
   text-decoration: none;
@@ -313,17 +222,139 @@ video {
   color: blue !important;
   opacity: 80% !important;
 }
+/* Copyright Link on landing page */
 
+/* Homepage Tutorial with videos start */
 .homepage_tutorial {
   overflow: scroll;
-  width: 95%;
+  width: 100%;
   height:500px;
   margin-top:20px;
+  overflow-x: hidden;
 }
+#homepage_video_subtitle h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:20px;
+  margin-top: 20px;
+  font-weight: bold;
+  margin-left: 150px;
+  width: 80%;
+}
+#homepage_video_subtitle p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:15px;
+  margin-top: -30px;
+}
+.homepage-wrapper {
+	width: 1170px;
+	margin: 0 auto;
+}
+.homepage-wrapper h2 {
+	width: 1170px;
+	margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size:40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.homepage-wrapper h3 {
+	width: 1170px;
+	margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+}
+#homepage_video_subtitle video {
+  width:60%;
+  height:80%;
+  margin-top:-30px;
+  margin-left: 60px;
+}
+/* Homepage Tutorial with videos start */
+
+/* Landing Page start */
+#homepage-user-input-field {
+  margin-left: 80px;
+}
+/* Landing Page end */
+
+/* Input Field styling for all website start */
+.input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: #131212;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+.input-field {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+.input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+.input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+/* Input Field styling for all website end */
+
+/* Background Image Styling start */
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+  z-index: -1;
+}
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+/* Background Image Styling end */
+
+/* Styling for link throughout the website start */
+#asteroid-link {
+  color:black;
+  text-decoration: none;
+}
+#asteroid-link:hover {
+  text-decoration: underline;
+}
+/* Styling for link throughout the website end */
+
+/* Asteroid Selection Page start */
+
 .asteroid_selection {
   margin-top: 30px;
 }
+/* Asteroid Selection Page end */
 
+/* Asteroid Details Styling start */
 .ui.list .list>
 .item a, .ui.list>.item a {
   color:black !important;
@@ -335,16 +366,22 @@ video {
   color:black !important;
   text-decoration: underline;
 }
+/* Asteroid Details Styling end */
 
+/* Styling for calendars start */
 input[type="date"] {
   display: block;
   text-align: center;
 }
+/* Styling for calendars end */
 
+/* Styling for video subtitles that dont need the overflow start */
 .video_info {
   overflow: hidden !important;
 }
+/* Styling for video subtitles that dont need the overflow end */
 
+/* Forgot page with no login needed start */
 .forgot-banner-area {
 	width: 70%;
 	height: 200px;
@@ -363,7 +400,6 @@ input[type="date"] {
 	color: #fff;
   text-align: center;
 }
-
 .forgot-content-area {
 	position: absolute;
 	top: 200px;
@@ -384,7 +420,6 @@ input[type="date"] {
 	font-family: poppins;
 	line-height: 30px;
 }
-
 .forgot-input-field {
   max-width: 380px;
   width: 100%;
@@ -418,18 +453,37 @@ input[type="date"] {
   color: #aaa;
   font-weight: 500;
 }
-
 .form-forgot-password {
   align-items: center;
 }
-.content-area .row .change-acc-info .col-3 {
+/* Forgot page with no login needed end */
+
+/* Change account info styling start */
+.change-acc-info .col-3 {
   margin-left: 450px;
 }
+#acc-info-submit{
+  margin-left: 35px;
+}
+/* Change account info styling end */
 
-.change-password {
+/* Change password styling starts */
+.change-password h3 {
+  margin-top: 20px;
+}
+.change-password .row {
+  margin-left:40px;
   margin-top: 50px;
 }
+#change-password-input-field {
+  margin-left: 450px;
+}
+#password-submit {
+  margin-left: 35px;
+}
+/* Change password styling ends */
 
+/* Styling for accordion on about page with login start */
 #about-accordion {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
@@ -438,852 +492,4 @@ input[type="date"] {
   margin-left: 5px;
   width: 100%;
 }
-
-#homepage_video_subtitle {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size:20px;
-}
-#homepage_video_subtitle h5 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size:20px;
-  margin-top: 20px;
-  font-weight: bold;
-}
-#homepage_video_subtitle p {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size:15px;
-}
-
-.homepage-wrapper {
-	width: 1170px;
-	margin: 0 auto;
-}
-.homepage-wrapper h2 {
-	width: 1170px;
-	margin: 0 auto;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
-  font-size:40px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.homepage-wrapper h3 {
-	width: 1170px;
-	margin: 0 auto;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
-  font-size: 20px;
-}
-#change-password-input-field {
-  margin-left: 410px;
-}
-#password-submit {
-  margin-left: 35px;
-}
-#acc-info-submit{
-  margin-left: 35px;
-}
-
-@media (max-width:1440px) {
-  .website-content {
-    background-color: white;
-    align-items: center;
-    text-align: center;
-    list-style-position: inside;
-  }
-  #homepage_video_subtitle p, 
-  #homepage_video_subtitle h5 {
-    margin-top:-30px;
-    width: 80%;
-  }
-  #homepage_video_subtitle video {
-    width:60%;
-    height:80%;
-    margin-top:-30px;
-    margin-left: -120px;
-  }
-  .homepage_tutorial {
-    overflow: scroll;
-    width: 100%;
-    height:500px;
-    margin-top:20px;
-    margin-left: 30px;
-  }
-  #asteroid-link {
-    color:black;
-    text-decoration: none;
-  }
-  .content-area .row .change-acc-info .col-3 {
-    margin-left: 400px;
-  }
-  #asteroid-link:hover {
-    text-decoration: underline;
-  }
-  
-  .navbar {
-    width: 70%;
-    margin-right:30px;
-    margin-left: 220px;
-    position: absolute;
-    font-size: 15px;
-  }
-  
-  #navbarDropdown{
-    padding-bottom: 2rem;
-    color: rgba(255,255,255,.55);
-  }
-  .nav-item-dropdown {
-    text-align: center !important;
-  }
-  .navbar-brand {
-    font-size: 20px;
-  }
-  .navbar-brand img {
-    width: 35px;
-    height:28px;
-  }
-  .nav-item {
-    margin-left: 10px;
-  }
-  .nav-link {
-    display:initial !important;
-  }
-  
-  .dropdown-menu {
-    background-color: #212529 !important;
-    color:#212529 !important;
-  }
-  .dropdown-item {
-    color: rgba(255,255,255,.55) !important;
-    background-color: #212529 !important;
-    font-family: 'Montserrat', sans-serif !important;
-  }
-  a.dropdown-item:hover,
-  a.dropdown-item:active {
-    color: white !important;
-    opacity: 80% !important;
-  }
-  
-  .wrapper {
-    width: 1170px;
-    margin: 0 auto;
-  }
-  .wrapper h3,
-  .wrapper h4 {
-    margin-right: 120px;
-  }
-  header {
-    height: 100px;
-    background: #262626;
-    width: 100%;
-    z-index: 10;
-  }
-
-  video {
-    margin-top: 30px;
-    width: 60%;
-  }
-  
-  #video_subtitle {
-    font-size: 15px;
-    overflow:scroll;
-    height: 250px;
-    width: 60%;
-    margin-left:15px;
-  }
-  .row {
-    width:90%;
-    margin-top: 20px;
-  }
-
-  
-  #asteroids_list {
-    text-align: center;
-    justify-content: center;
-  }
-  #asteroids_list ul {
-    height:610px; 
-    width:100%; 
-    overflow:hidden; 
-    overflow-y:scroll; 
-    font-size: medium; 
-    margin-top:30px;
-    margin-left: 100px;
-  }
-  
-  .banner-area {
-    width: 70%;
-    height: 200px;
-    margin-right:30px;
-    margin-left: 220px;
-    position: absolute;
-    top: 70px;
-    background-image: url(/static/img/asteroid_header.jpeg);
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-  }
-  .banner-area h2 {
-    padding-top: 3%;
-    font-size: 70px;
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .content-area {
-    position: absolute;
-    top: 270px;
-    background: #ebebeb;
-    min-height: 700px;
-    width:70%; 
-    margin-right:30px;
-    margin-left: 220px;
-  }
-  .content-area h2 {
-    letter-spacing: 4px;
-    padding-top: 30px;
-    font-size: 20px;
-    margin: 0;
-  }
-  .content-area p {
-    padding: 2% 0px;
-    font-family: poppins;
-    line-height: 20px;
-  }
-  .content-area .col-5 {
-    width:50%;
-  }
-  .content-area .col-7 {
-    width:50%;
-    margin-top: 40px;
-  }
-  .content-area .col-7 video {
-    width:80%;
-  }
-  .content-area .col-7 #video_subtitle {
-    width: 80%;
-    margin-left: 40px;
-  }
-  .content-area .col-7 img {
-    width: 400px;
-    height: 380px;
-  }
-  
-  .about-banner-area {
-    width: 70%;
-    height: 200px;
-    margin-right:30px;
-    margin-left: 275px;
-    position: absolute;
-    background-image: url(/static/img/asteroid_header.jpeg);
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-  }
-  .about-banner-area h2 {
-    padding-top: 3%;
-    font-size: 70px;
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .about-content-area {
-    position: absolute;
-    top: 200px;
-    background: #ebebeb;
-    min-height: 700px;
-    width:70%; 
-    margin-right:30px;
-    margin-left: 275px;
-  }
-  .about-content-area h2 {
-    letter-spacing: 4px;
-    padding-top: 30px;
-    font-size: 40px;
-    margin: 0;
-  }
-  .about-content-area p {
-    padding: 2% 0px;
-    font-family: poppins;
-    line-height: 30px;
-  }
-  
-  #about-nologin-accordion {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    font-size:20px;
-    margin-top: 50px;
-    margin-left: 90px;
-    width: 87%;
-  }
-  
-  #copyright_link {
-    color: black;
-    text-decoration: none;
-  }
-  #copyright_link:hover,
-  #copyright_link:active {
-    color: blue !important;
-    opacity: 80% !important;
-  }
-  
-  .asteroid_selection {
-    margin-top: 30px;
-  }
-  
-  .ui.list .list>
-  .item a, .ui.list>.item a {
-    color:black !important;
-    text-decoration: none;
-  }
-  
-  .ui.list .list>
-  .item a, .ui.list>.item a:hover {
-    color:black !important;
-    text-decoration: underline;
-  }
-  
-  input[type="date"] {
-    display: block;
-    text-align: center;
-  }
-  
-  .video_info {
-    overflow: hidden !important;
-  }
-  
-  .forgot-banner-area {
-    width: 70%;
-    height: 200px;
-    margin-right:30px;
-    margin-left: 220px;
-    position: absolute;
-    background-image: url(/static/img/asteroid_header.jpeg);
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-  }
-  .forgot-banner-area h2 {
-    padding-top: 3%;
-    font-size: 70px;
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .forgot-content-area {
-    position: absolute;
-    top: 200px;
-    background: #ebebeb;
-    min-height: 700px;
-    width:70%; 
-    margin-right:30px;
-    margin-left: 220px;
-  }
-  .forgot-content-area h2 {
-    letter-spacing: 4px;
-    padding-top: 30px;
-    font-size: 40px;
-    margin-left: -130px;
-  }
-  .forgot-content-area p {
-    padding: 2% 0px;
-    font-family: poppins;
-    line-height: 30px;
-  }
-  
-  .forgot-input-field {
-    max-width: 380px;
-    width: 100%;
-    background-color: #f0f0f0;
-    margin: 10px 0;
-    height: 55px;
-    margin-left: 310px;
-    border-radius: 55px;
-    display: grid;
-    grid-template-columns: 15% 85%;
-    padding: 0 0.4rem;
-    position: relative;
-  }
-  .forgot-input-field i {
-    text-align: center;
-    line-height: 55px;
-    color: #131212;
-    transition: 0.5s;
-    font-size: 1.1rem;
-  }
-  .forgot-input-field input {
-    background: none;
-    outline: none;
-    border: none;
-    line-height: 1;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #333;
-  }
-  .forgot-input-field input::placeholder {
-    color: #aaa;
-    font-weight: 500;
-  }
-  
-  .form-forgot-password {
-    align-items: center;
-  }
-  #form-forgot-button {
-    margin-left: -150px;
-  }
-  
-  .change-password {
-    margin-top: 50px;
-  }
-  #change-password-input-field {
-    margin-left: 300px;
-  }
-  #password-submit {
-    margin-left: -180px;
-  }
-  #acc-info-submit{
-    margin-left: 35px;
-  }
-  
-  #about-accordion {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    font-size:20px;
-    margin-top: 50px;
-    margin-left: 40px;
-    width: 80%;
-  }
-  
-  #homepage_video_subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    font-size:20px;
-  }
-  #homepage_video_subtitle h5 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    font-size:20px;
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  #homepage_video_subtitle p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    font-size:15px;
-  }
-  
-  .homepage-wrapper {
-    width: 1170px;
-    margin: 0 auto;
-  }
-  .homepage-wrapper h2 {
-    width: 80%;
-    margin: 0 auto;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
-    font-size:30px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-left: 30px;
-  }
-  .homepage-wrapper h3 {
-    width: 80%;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
-    font-size: 15px;
-    margin-left: 30px;
-  }
-}
-
-/* Extra small devices (phones, 600px and down) */
-/* @media only screen and (max-width: 600px) {
-  .content-area {background: red;}
-} */
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-/* @media only screen and (max-width: 600px) {
-  
-  .content-area {background: green;}
-} */
-
-/* Medium devices (landscape tablets, 768px and up) THALIAS PHONE*/ 
-@media only screen and (max-width: 768px) {
-  #apod_info {
-    margin-left: -600px;
-  }
-  #apod_info h2 {
-    background-color: #ebebeb;
-    font-size: xx-large;
-  }
-  #apod_info li {
-    background-color: #ebebeb; 
-    margin-top:20px; 
-    text-align: left;
-  }
-  #apod_other_info {
-    background-color: #ebebeb; 
-    text-align: left;
-  }
-  #apod_form {
-    font-weight:bold; 
-    font-size: medium;
-  }
-  #apod_date {
-    margin-left:90px;
-  }
-  .content-area .row .col-7 img {
-    margin-left: -50px !important;
-  }
-  
-  #homepage-login-form .row .col-10,
-  #homepage-login-form .row .col-6 {
-    width:190px;
-  }
-  #homepage-login-form {
-    margin-top: -50px;
-    margin-left: -50px;
-  }
-  #login-btn {
-    margin-left: 50px;
-  }
-  #rememberme-button label{
-    margin-left:10px;
-  }
-  input[type=checkbox] {
-    margin-left:90px;
-  }
-  #homepage-signup-form .col-8 {
-    width:220px !important;
-  }
-  #forgot-password{
-    margin-left: 50px;
-  }
-  .navbar {
-    width: 430px;
-    margin-left:0px;
-  
-    font-size: 15px;
-  }
-  .navbar-brand {
-    font-size: 13px;
-  }
-  .navbar-brand img {
-    width: 25px;
-    height:18px;
-  }
-  nav span  {
-    margin-top: 0px;
-  }
-  #navbarDropdown{
-    margin-top: 20px;
-  }
-  .homepage-wrapper h2,
-  .homepage-wrapper h3 {
-   width: 100%;
-  }
-  .homepage-wrapper {
-    width: 90%;
-    margin-left:-20px;
-  }
-  .homepage_tutorial{
-    width:900px;
-    margin-left: 60px;
-  }
-  #homepage_video_subtitle {
-    display:none;
-  } 
-  #homepage_video_subtitle video {
-    display:none;
-  }
-  .banner-area {
-    width: 430px;
-    margin-left:0px;
-    top: 80px;
-  }
-  .banner-area h2 {
-    font-size: 40px;
-    margin-top:40px;
-  }
-  .content-area {
-    width: 430px;
-    margin-left:0px;
-    top: 250px;
-    overflow:hidden;
-  }
-  .content-area .col-5 {
-    width: 350px;
-  }
-  .content-area .col-7 {
-    display:none;
-  }
-  
-  .content-area .col-7 video {
-    display:none;
-  }
-  #asteroids_list {
-    overflow: scroll;
-    margin-left:-80px;
-    width: 490px;
-    overflow-x:hidden;
-  }
-  #asteroids_list ul {
-    height:610px; 
-    font-size: small; 
-    margin-top:30px;
-    text-align:justify;
-  }
-  .forgot-banner-area {
-    width: 90%;
-    height: 200px;
-    margin-right:30px;
-    margin-left: 100px;
-    position: absolute;
-    background-image: url(/static/img/asteroid_header.jpeg);
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-  }
-  .forgot-banner-area h2 {
-    padding-top: 3%;
-    font-size: 70px;
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .forgot-content-area {
-    position: absolute;
-    top: 200px;
-    background: #ebebeb;
-    min-height: 700px;
-    width:90%; 
-    margin-right:30px;
-    margin-left: 100px;
-  }
-  .forgot-content-area h2 {
-    letter-spacing: 4px;
-    padding-top: 30px;
-    font-size: 40px;
-    margin: 0;
-  }
-  .forgot-content-area p {
-    padding: 2% 0px;
-    font-family: poppins;
-    line-height: 30px;
-  }
-  
-  .forgot-input-field {
-    max-width: 380px;
-    width: 100%;
-    background-color: #f0f0f0;
-    margin: 10px 0;
-    height: 55px;
-    margin-left: 380px;
-    border-radius: 55px;
-    display: grid;
-    grid-template-columns: 15% 85%;
-    padding: 0 0.4rem;
-    position: relative;
-  }
-  
-  .form-forgot-password {
-    align-items: center;
-  }
-  #form-forgot-button{
-    margin-left: -15px;
-  }
-} 
-
-
-/* Large devices (laptops/desktops, 992px and up) IPAD MOM */
-@media only screen and (min-width: 992px) {
-  #homepage-login-form .row .col-10,
-  #homepage-login-form .row .col-6 {
-    width:200px;
-  }
-  .container .signin-signup .row .col-10 {
-    width: 10;
-    margin-left: 10px;
-  }
-  #login-btn {
-    margin-left: 120px;
-  }
-  #rememberme-button label{
-    margin-left:10px;
-  }
-  input[type=checkbox] {
-    margin-left:90px;
-  }
-  #homepage-signup-form .col-8 {
-    width:280px;
-  }
-  #forgot-password{
-    margin-left: 120px;
-  }
-  .navbar {
-    width: 80%;
-    margin-right:30px;
-    margin-left: 100px;
-    position: absolute;
-    font-size: 15px;
-  }
-  .nav-item {
-    margin-left: 0px;
-  }
-  .navbar-brand {
-    font-size: 13px;
-  }
-  .navbar-brand img {
-    width: 25px;
-    height:18px;
-  }
-  nav span  {
-    margin-top: 0px;
-  }
-  #navbarDropdown {
-    margin-top: 20px;
-  }
-  .homepage-wrapper h2,
-  .homepage-wrapper h3 {
-   width: 90%;
-  }
-  .homepage-wrapper {
-    width: 100%;
-  }
-  #homepage_video_subtitle {
-    width: 120%;
-  }
-  .banner-area {
-    margin-left: 100px;
-    width: 80%;
-    top: 90px;
-  }
-  .content-area {
-    margin-left: 100px;
-    width: 80%;
-    top: 250px;
-  }
-  .content-area .col-5 {
-    width: 40%;
-    margin-left: -200px;
-  }
-  .content-area .col-7 {
-    width: 40%;
-  }
-  .content-area .col-7 video {
-    width:100%;
-    margin-top: 100px;
-  }
-  #video_subtitle h2{
-    font-size: 30px;
-  }
-  #asteroids_list {
-    margin-left:50px;
-    overflow: scroll;
-  }
-  #asteroids_list ul {
-    height:610px; 
-    width:100%; 
-    overflow:hidden; 
-    overflow-y:scroll; 
-    font-size: medium; 
-    margin-top:30px;
-  }
-  .forgot-banner-area {
-    width: 90%;
-    height: 200px;
-    margin-right:30px;
-    margin-left: 100px;
-    position: absolute;
-    background-image: url(/static/img/asteroid_header.jpeg);
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-  }
-  .forgot-banner-area h2 {
-    padding-top: 3%;
-    font-size: 70px;
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .forgot-content-area {
-    position: absolute;
-    top: 200px;
-    background: #ebebeb;
-    min-height: 700px;
-    width:90%; 
-    margin-right:30px;
-    margin-left: 100px;
-  }
-  .forgot-content-area h2 {
-    letter-spacing: 4px;
-    padding-top: 30px;
-    font-size: 40px;
-    margin: 0;
-  }
-  .forgot-content-area p {
-    padding: 2% 0px;
-    font-family: poppins;
-    line-height: 30px;
-  }
-  
-  .forgot-input-field {
-    max-width: 380px;
-    width: 100%;
-    background-color: #f0f0f0;
-    margin: 10px 0;
-    height: 55px;
-    margin-left: 380px;
-    border-radius: 55px;
-    display: grid;
-    grid-template-columns: 15% 85%;
-    padding: 0 0.4rem;
-    position: relative;
-  }
-  
-  .form-forgot-password {
-    align-items: center;
-  }
-  #form-forgot-button{
-    margin-left: -15px;
-  }
-} 
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1290px) {
-  .content-area {background: pink;}
-
-}
-
-@media (min-width:1920px) {
-  .homepage_tutorial {
-    width: 100%;
-  }
-  .homepage-wrapper h2,
-  .homepage-wrapper h3 {
-   width: 100%;
-  }
-  .homepage-wrapper {
-    width: 100%;
-  }
-  #homepage_video_subtitle {
-    width: 120%;
-  }
-  .navbar {
-    margin-left: 250px;
-  }
-  .banner-area {
-    margin-left: 250px;
-  }
-  .content-area {
-    margin-left: 250px;
-  }
-}
+/* Styling for accordion on about page with login end */
