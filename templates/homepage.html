@@ -11,7 +11,7 @@
           <h2 class="title">Log in</h2>
           <div class="row">
             <div class="col-6">
-              <div class="input-field" style="margin-left: 80px;">
+              <div class="input-field" id="homepage-user-input-field">
                 <i class="fas fa-user-astronaut"></i>
                 <input type="text" placeholder="Username" name="user_username"  id="user_username" required />
               </div>
@@ -366,22 +366,8 @@ form.sign-in-form {
   pointer-events: all;
 }
 
-@media (max-width: 1440px) {
-  .container .signin-signup .row .col-10 {
-    width: 240px;
-    margin-left: 80px;
-  }
-  #login-btn {
-    margin-right: 50px;
-  }
-  #rememberme-button {
-    margin-left: -20px;
-  }
-  #forgot-password{
-    margin-right: 50px;
-  }
-}
 @media (max-width: 870px) {
+  
   .container {
     min-height: 800px;
     height: 100vh;
@@ -490,6 +476,26 @@ form.sign-in-form {
   .container.sign-up-mode .signin-signup {
     top: 5%;
     transform: translate(-50%, 0);
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  #homepage-login-form {
+    background: orange !important;
+  }
+
+  .container .signin-signup .row .col-10 {
+    width: 10;
+    margin-left: 10px !important;
+  }
+  #login-btn {
+    margin-right: 10;
+  }
+  #rememberme-button {
+    margin-left: -10px;
+  }
+  #forgot-password{
+    margin-right: 10px;
   }
 }
 

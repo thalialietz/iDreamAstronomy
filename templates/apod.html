@@ -5,34 +5,34 @@
 {% block body %}
 <div class="box-area">
   <div class="banner-area">
-      <h2>Astronomy Picture of the day</h2>
+      <h2>APOD</h2>
   </div>
   <div class="content-area">
     <div class="wrapper">
-      <div class="row align-items-center justify-content-center" style="margin-top:20px;">
-        <div class="col-5">
-          <ul class="list-group list-group-flush" style="background-color: #ebebeb;">
-            <h2 style="background-color: #ebebeb; font-size: xx-large;">{{ apod.title }}</h2>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-5" id="apod_info">
+          <ul class="list-group list-group-flush" >
+            <h2>{{ apod.title }}</h2>
             {% if 'copyright' in apod %}
-            <li class="list-group-item" style="background-color: #ebebeb; margin-top:20px; text-align: left;">
+            <li class="list-group-item">
               <b>Photographer: </b>{{ apod.copyright }}
             </li>{% else %}
-            <li class="list-group-item" style="background-color: #ebebeb; margin-top:20px; text-align: left;">
+            <li class="list-group-item">
               <b>Photographer: </b>Not available
             </li>
             {% endif %}
-            <li class="list-group-item" style="background-color: #ebebeb; text-align: left;"><b>Date: </b>{{apod.date}}</li>
-            <li class="list-group-item" style="background-color: #ebebeb; text-align: left;"><b>Explanation: </b>{{apod.explanation}}</li>
+            <li class="list-group-item" id="apod_other_info"><b>Date: </b>{{apod.date}}</li>
+            <li class="list-group-item" id="apod_other_info" ><b>Explanation: </b>{{apod.explanation}}</li>
           </ul>
           <br>
           <form action="/apod">
-              <label for="apod_selection" style="font-weight:bold; font-size: medium;">Select date to see a picture from a past day</label>
-              <input type="date" id="apod_date" name="apod_date" min="1995-06-16" required style="margin-left:170px;">
+              <label for="apod_selection" id="apod_form">Select date to see a picture from a past day</label>
+              <input type="date" id="apod_date" name="apod_date" min="1995-06-16" required>
               <br>
               <input type="submit" class="ui primary button">
           </form>
         </div>
-        <div class="col-7">
+        <div class="col-7" id="apod_img">
           {% if apod.media_type == 'image' %}
           <img src="{{ apod.url }}" >
           {% elif apod.media_type == 'video' %}
