@@ -9,8 +9,8 @@
         <div class="wrapper">
             <div class="row align-items-center justify-content-center">
                 <div class="col-5">
-                    <h1>Select dates to see asteroids that are orbiting Earth</h1>
-                    <form action="/asteroids">
+                    <h1 id="asteroid_selection_title">Select dates to see asteroids that are orbiting Earth</h1>
+                    <form action="/asteroids" class="asteroids_selection">
                     <div class="col-6">
                         <label for="asteroids_selection">Start Date:</label>
                         <input type="date" class="form-control" id="asteroid_start_date" name="asteroid_start_date" min="" class="asteroid_dates" required>
@@ -20,7 +20,7 @@
                         <input type="date" class="form-control" id="asteroid_end_date" name="asteroid_end_date" min="" class="asteroid_dates" required>        
                     </div>
                     <br>
-                    <button type="submit" class="ui primary button">Submit</button>
+                    <button type="submit" class="ui primary button" id="asteroid_selection_button">Submit</button>
                     </form>
                 </div>
                 <div class="col-7">
