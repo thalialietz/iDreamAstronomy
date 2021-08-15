@@ -26,7 +26,7 @@
           
           <div class="row">
             <div class="col-10">
-              <div class="input-field">
+              <div class="input-field" id="homepage-user-password-input-field">
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Password" name="user_password" id="user_password" required/>
               </div>
@@ -46,7 +46,7 @@
         </form>
         
         <form action="/users" method="POST" class="sign-up-form" id="homepage-signup-form">
-          <h2 class="title">Sign up</h2>
+          <h2 class="title" id="signup-title">Sign up</h2>
           <div class="row">
             <div class="col-12">
               <div class="input-field">
@@ -91,7 +91,7 @@
               <i toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-confirm-password"></i>
             </div>
           </div>
-          <input type="submit" class="btn btn-outline-primary align-bottom" value="Sign up" />
+          <input type="submit" class="btn btn-outline-primary align-bottom" value="Sign up" id="signup-button" />
         </form>
       </div>
     </div>
@@ -479,25 +479,6 @@ form.sign-in-form {
   }
 }
 
-@media only screen and (min-width: 1300px) {
-  #homepage-login-form {
-    background: orange !important;
-  }
-
-  .container .signin-signup .row .col-10 {
-    width: 10;
-    margin-left: 10px !important;
-  }
-  #login-btn {
-    margin-right: 10;
-  }
-  #rememberme-button {
-    margin-left: -10px;
-  }
-  #forgot-password{
-    margin-right: 10px;
-  }
-}
 
 @media (max-width: 570px) {
   form {
