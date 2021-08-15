@@ -11,11 +11,11 @@
                 <div class="col-5">
                     <h1>Select dates to see asteroids that are orbiting Earth</h1>
                     <form action="/asteroids">
-                    <div class="col-6" style="margin-left:125px;">
+                    <div class="col-6">
                         <label for="asteroids_selection">Start Date:</label>
                         <input type="date" class="form-control" id="asteroid_start_date" name="asteroid_start_date" min="" class="asteroid_dates" required>
                     </div>
-                    <div class="col-6" style="margin-left:125px;">
+                    <div class="col-6">
                         <label for="asteroids_selection">End Date:</label>
                         <input type="date" class="form-control" id="asteroid_end_date" name="asteroid_end_date" min="" class="asteroid_dates" required>        
                     </div>
@@ -65,4 +65,9 @@
     };
     
 </script>
+<style>
+    .row .col-5 .col-6 {
+        margin-left:125px;
+    }
+</style>
 {% endblock %}

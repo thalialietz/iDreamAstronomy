@@ -29,19 +29,26 @@ function toggleShowNewPassword() {
   }
 }
 
-$('#homepage-login-form').on('submit', function() {
+const rmCheck = document.getElementById("rememberMe"),
+usernameInput = document.getElementById("user_username");
 
-  if ($('#rememberMe').is(':checked')) {
-      // save username and password
-      localStorage.userName = $('#user_username').val();
-      localStorage.password = $('#user_password').val();
-      localStorage.checkBoxValidation = $('#rememberMe').val();
-  } else {
-      localStorage.userName = '';
-      localStorage.password = '';
-      localStorage.checkBoxValidation = '';
-  }
-});
+if (localStorage.checkbox && localStorage.checkbox !== "") {
+rmCheck.setAttribute("checked", "checked");
+usernameInput.value = localStorage.username;
+} else {
+rmCheck.removeAttribute("checked");
+usernameInput.value = "";
+}
+
+function lsRememberMe() {
+if (rmCheck.checked && usernameInput.value !== "") {
+localStorage.username = usernameInput.value;
+localStorage.checkbox = rmCheck.value;
+} else {
+localStorage.username = "";
+localStorage.checkbox = "";
+}
+}
 
 $(document).on('click', '.toggle-password', function() {
 

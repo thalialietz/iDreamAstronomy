@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="about-box-area">
+    <div class="about-banner-area">
+        <h2>About</h2>
+    </div>
+    <div class="about-content-area">
+        <div class="about-wrapper">
+            <div class="ui styled accordion" id="about-nologin-accordion">
+                <div class="title">
+                  <i class="dropdown icon"></i>
+                  What is iDreamAstronomy for?
+                </div>
+                <div class="content">
+                  <p class="transition hidden">On iDreamAstronomy you can view Near Earth Asteroids, see the Astronomy Picture of the Day, most known as APOD, and see APOD pictures
+                from past days. You can choose asteroids that get your attention and add them to your journal so that 
+            you can easily find them later. </p>
+                </div>
+                <div class="title">
+                  <i class="dropdown icon"></i>
+                  Why was iDreamAstronomy developed?
+                </div>
+                <div class="content">
+                  <p class="transition hidden">iDreamAstronomy was created as a final project for Hackbright Academy's Software Engineering Fellowship program.</p>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    Who is the developer behind iDreamAstronomy?
+                </div>
+                <div class="content">
+                    <p class="transition hidden">The developer behind iDreamAstronomy  is <a href="https://www.linkedin.com/in/thalialietz/" target="_blank">Thalia Lietz</a>. 
+                        She is an immigrant originally from Brazil with a background in HR who decided to become a Software Engineer.
+                Thalia Lietz had an idea to start iDreamAstronomy as her final project stemming from her love of Astronomy.</p>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    Where does all the information comes from?
+                </div>
+                <div class="content">
+                    <p class="transition hidden">All the information displayed throughout the website comes from <a href="https://api.nasa.gov/" target="_blank">NASA Open API's</a> named Asteroids - NeoWs and APOD,
+                        all the pictures and videos come from <a href="https://images.nasa.gov/" target="_blank">Nasa's Image and Video Library.</a></p>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    How can I contact the developer?
+                </div>
+                <div class="content">
+                    <p class="transition hidden">To contact Thalia Lietz please visit her  <a href="https://www.linkedin.com/in/thalialietz/" target="_blank">LinkedIn</a> or click <a href="mailto:thalia.lietz@icloud.com">here</a> to send her an email.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+    
+       window.onload = function(){
+           $('.ui.accordion').accordion();
+    
+       };
+    });
+    
+</script>
+{% endblock %}
