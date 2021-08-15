@@ -234,12 +234,12 @@ def change_account_info():
     if new_fname:
         user.fname = new_fname
         db.session.commit()
-        flash("Your first name has been successfully updated!")
+        flash("The information you entered has been successfully updated!")
         return redirect('/profile')
     if new_lname:
         user.lname = new_lname
         db.session.commit()
-        flash("Your last name has been successfully updated!")
+        flash("The information you entered has been successfully updated!")
         return redirect('/profile')
     if new_email:
         try:
@@ -260,7 +260,7 @@ def change_account_info():
         except exc.IntegrityError:
             db.session.rollback()
             flash("Sorry, the username you entered is not available")
-
+    
     return redirect('/change-acc-information')
 
 
@@ -440,6 +440,13 @@ def about():
     return render_template("about.html")
 
 
+@app.route("/about_idreamastronomy")
+def about_idreamastronomy():
+    """Displays the about the developer section for no logged in user"""
+
+    return render_template("about_no_login.html")
+
+
 @app.route("/users", methods=['POST'])
 def register_user():
     """Registers a new user in the database"""
@@ -495,7 +502,6 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.debug = True
     connect_to_db(app)
     app.run(host='0.0.0.0')
     

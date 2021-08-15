@@ -4,20 +4,20 @@
 
 {% block body %}
 
-  <div class="container">
+  <div class="container"> 
     <div class="forms-container">
       <div class="signin-signup">
         <form action="/log-in" class="sign-in-form" id="homepage-login-form">
           <h2 class="title">Log in</h2>
           <div class="row">
             <div class="col-6">
-              <div class="input-field" style="margin-left: 85px;">
+              <div class="input-field" style="margin-left: 80px;">
                 <i class="fas fa-user-astronaut"></i>
                 <input type="text" placeholder="Username" name="user_username"  id="user_username" required />
               </div>
             </div>
-            <div>
-              <input class="form-check-input" type="checkbox" id="rememberMe">
+            <div id="rememberme-button">
+              <input class="form-check-input" type="checkbox" id="rememberMe" value="lsRememberMe">
               <label class="form-check-label" for="autoSizingCheck">
                 Remember me
               </label>
@@ -36,7 +36,7 @@
             </div>
           </div>
           <input type="submit" value="Login" class="btn btn-outline-primary" id="login-btn" onclick="lsRememberMe()">
-          <div>
+          <div id="forgot-password">
             <a href="/forgot">
               Forgot Your Password?
             </a>
@@ -123,7 +123,7 @@
       </div>
       <div class="row">
         <div id="bottom">
-          <a type="button" class="btn-floating btn-large btn-li" id="linkedin_button" href="https://www.linkedin.com/in/thalialietz/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="/about_idreamastronomy" target="_blank" id="copyright_link">© Thalia Lietz</a>
         </div>
       </div>  
     </div>
@@ -366,6 +366,21 @@ form.sign-in-form {
   pointer-events: all;
 }
 
+@media (max-width: 1440px) {
+  .container .signin-signup .row .col-10 {
+    width: 240px;
+    margin-left: 80px;
+  }
+  #login-btn {
+    margin-right: 50px;
+  }
+  #rememberme-button {
+    margin-left: -20px;
+  }
+  #forgot-password{
+    margin-right: 50px;
+  }
+}
 @media (max-width: 870px) {
   .container {
     min-height: 800px;
@@ -387,7 +402,22 @@ form.sign-in-form {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 1fr;
   }
-
+  .container .signin-signup .row .col-10 {
+    width: 180px;
+    margin-left: 80px;
+  }
+  #homepage-signup-form .row .col-8 {
+    width: 330px;
+  }
+  #login-btn {
+    margin-right: 20px;
+  }
+  #rememberme-button {
+    margin-left: -5px;
+  }
+  #forgot-password{
+    margin-right: 20px;
+  }
   .panel {
     flex-direction: row;
     justify-content: space-around;
@@ -430,7 +460,7 @@ form.sign-in-form {
     height: 1500px;
     transform: translateX(-50%);
     left: 30%;
-    bottom: 68%;
+    bottom: 72%;
     right: initial;
     top: initial;
     transition: 2s ease-in-out;
@@ -438,7 +468,7 @@ form.sign-in-form {
 
   .container.sign-up-mode:before {
     transform: translate(-50%, 100%);
-    bottom: 32%;
+    bottom: 25%;
     right: initial;
   }
 
@@ -470,6 +500,23 @@ form.sign-in-form {
 
   .image {
     display: none;
+  }
+
+  .container .signin-signup .row .col-10 {
+    width: 160px;
+    margin-left: 80px;
+  }
+  #homepage-signup-form .row .col-8 {
+    width: 250px;
+  }
+  #login-btn {
+    margin-right: 5px;
+  }
+  #rememberme-button {
+    margin-left: -5px;
+  }
+  #forgot-password{
+    margin-right: 5px;
   }
 
   .panel .content {

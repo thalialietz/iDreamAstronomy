@@ -34,7 +34,7 @@
         </div>
         <div class="col-7">
           {% if apod.media_type == 'image' %}
-          <img src="{{ apod.url }}" width = "650" height = "590" >
+          <img src="{{ apod.url }}" >
           {% elif apod.media_type == 'video' %}
           <a href="{{apod.url}}" target="_blank" id="asteroid-link" >Click here to see the interactive image!</a>
           {% endif %}
