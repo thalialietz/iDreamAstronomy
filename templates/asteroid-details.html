@@ -10,9 +10,9 @@
   <div class="content-area">
     <div class="wrapper">
       <div class="row">
-        <div class="col-5" id="asteroids_list">
+        <div class="col-5" id="asteroid_details_list">
           <h2>{{ asteroid_details_dict.name }}</h2>
-          <div class="ui relaxed divided list">
+          <div class="ui relaxed divided list" id="asteroid_details_list">
             <div class="item">
               <div class="content">
                 <h6 class="header"><a href='{{asteroid_details_dict.nasa_jpl_url}}' target="_blank">JPL Small-Body Database Browser</a></h6>
@@ -74,7 +74,7 @@
               </div>
             </div>
           </div>
-          <form action="/save-favorites" method="POST">
+          <form action="/save-favorites" method="POST" id="asteroid_details_button">
             <input type='text' name='api_asteroid_id' value= {{ asteroid_details_dict.api_asteroid_id }} hidden>
             <input type='text' name='name' value='{{ asteroid_details_dict.name }}' hidden>
             <input type='text' name='potentially_hazardous' value={{ asteroid_details_dict.potentially_hazardous }} hidden>
@@ -96,7 +96,7 @@
           </form>
         </div>
         <div class="col-7">
-          <video controls autoplay muted>
+          <video controls autoplay muted id="educational_videos">
             <source src="/static/img/small_worlds.mp4" type="video/mp4">
           </video>
           <div id="video_subtitle" class="video_info">
