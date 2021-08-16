@@ -5,7 +5,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body,
 input {
   font-family: 'Montserrat', sans-serif;
@@ -27,6 +26,12 @@ b {
 #navbarDropdown{
   padding-bottom: 2rem;
   color: rgba(255,255,255,.55);
+}
+.nav-item-dropdown {
+  margin-top: 20px;
+}
+#nav-item-dropdown-menu {
+  list-style-type:none;
 }
 .navbar-brand {
   font-size: 20px;
@@ -372,6 +377,7 @@ video {
 input[type="date"] {
   display: block;
   text-align: center;
+  background: white;
 }
 /* Styling for calendars end */
 
@@ -494,7 +500,7 @@ input[type="date"] {
 }
 /* Styling for accordion on about page with login end */
 
-
+/* MACBOOK STYLING */
 @media (min-width: 1281px) and (max-width:1441px) {
 
 /* Navbar start */
@@ -890,13 +896,21 @@ video {
 }
 /* Styling for accordion on about page with login end */
 
+/* Asteroid Details Table start */
+
+#asteroid_details_list h2{
+  margin-left: 40px;
 }
+/* Asteroid Details Table end */
+} 
+/* MACBOOK ENDS */
 
 /* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
 
+/* IPAD LANDSCAPE */
 @media (min-width: 1025px) and (max-width: 1280px) {
   body {
     touch-action: pan-y;
@@ -939,346 +953,375 @@ video {
   .right-panel img {
     margin-top: 110px;
   }
-/* Landing Page end */
+  /* Landing Page end */
+    
+  /* Navbar start */
+  .navbar {
+    z-index: 1;
+    width: 75%;
+    margin-right:30px;
+    margin-left: 150px;
+  }
+  #navbarDropdown{
+    padding-bottom: 2rem;
+    color: rgba(255,255,255,.55);
+    margin-top:20px;
+  }
+  #nav-item-dropdown-menu {
+    list-style-type:none;
+  }
+  .navbar-brand {
+    font-size: 15px;
+  }
+  .navbar-brand img {
+    width: 25px;
+    height:18px;
+  }
+  .nav-item {
+    margin-left: 0px;
+    font-size:13px;
+    float:left;
+  }
   
-/* Navbar start */
-.navbar {
-  z-index: 1;
-  width: 75%;
-  margin-right:30px;
-  margin-left: 150px;
-}
-#navbarDropdown{
-  padding-bottom: 2rem;
-  color: rgba(255,255,255,.55);
-  margin-top:20px;
-}
-.navbar-brand {
-  font-size: 15px;
-}
-.navbar-brand img {
-  width: 25px;
-  height:18px;
-}
-.nav-item {
-  margin-left: 0px;
-  font-size:13px;
-}
-.dropdown-menu {
-  background-color: #212529 !important;
-  color:#212529 !important;
+  #nav-item-dropdown-menu {
+    list-style-type:none;
+  }
+  span a {
+    float:right;
+  }
   
-}
-.dropdown-item {
-  color: rgba(255,255,255,.55) !important;
-  background-color: #212529 !important;
-  font-family: 'Montserrat', sans-serif !important;
-  margin-top: 10px;
-}
-a.dropdown-item:hover,
-a.dropdown-item:active {
-  color: white !important;
-  opacity: 80% !important;
-}
-/* Navbar end */
+  .dropdown-menu {
+    background-color: #212529 !important;
+    color:#212529 !important;
+  }
+  .dropdown-item {
+    color: rgba(255,255,255,.55) !important;
+    background-color: #212529 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    margin-top: 10px;
+  }
+  a.dropdown-item:hover,
+  a.dropdown-item:active {
+    color: white !important;
+    opacity: 80% !important;
+  }
+  /* Navbar end */
 
-/* Wrapper for all pages start */
-.wrapper h3 {
-  margin-top:20px;
-}
-/* Wrapper for all pages end */
+  /* Wrapper for all pages start */
+  .wrapper h3 {
+    margin-top:20px;
+  }
+  /* Wrapper for all pages end */
 
-/* Homepage Tutorial with videos start */
-.homepage_tutorial {
-  overflow: scroll;
-  width: 65%;
-  height:500px;
-  margin-top:20px;
-  overflow-x: hidden;
-  margin-left:15px;
-}
-#homepage_video_subtitle h5 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size:20px;
-  margin-top: 20px;
-  font-weight: bold;
-  margin-left: 80px;
-  width: 80%;
-}
-#homepage_video_subtitle p {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size:15px;
-  margin-top: -30px;
-}
-.homepage-wrapper h2 {
-  font-size:30px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-right: -150px !important;
-}
-.homepage-wrapper h3 {
-  font-family: 'Montserrat', sans-serif;
-  word-break: break-word;
-  width: 60%;
-  font-weight: 100;
-  font-size: 20px;
-  margin-left: 60px;
-}
-#homepage_video_subtitle video {
-  width:60%;
-  height:80%;
-  margin-top:-30px;
-  margin-left: 60px;
-}
-/* Homepage Tutorial with videos start */
+  /* Homepage Tutorial with videos start */
+  .homepage_tutorial {
+    overflow: scroll;
+    width: 65%;
+    height:500px;
+    margin-top:20px;
+    overflow-x: hidden;
+    margin-left:15px;
+  }
+  #homepage_video_subtitle h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size:20px;
+    margin-top: 20px;
+    font-weight: bold;
+    margin-left: 80px;
+    width: 80%;
+  }
+  #homepage_video_subtitle p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size:15px;
+    margin-top: -30px;
+  }
+  .homepage-wrapper h2 {
+    font-size:30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-right: -150px !important;
+  }
+  .homepage-wrapper h3 {
+    font-family: 'Montserrat', sans-serif;
+    word-break: break-word;
+    width: 60%;
+    font-weight: 100;
+    font-size: 20px;
+    margin-left: 60px;
+  }
+  #homepage_video_subtitle video {
+    width:60%;
+    height:80%;
+    margin-top:-30px;
+    margin-left: 60px;
+  }
+  /* Homepage Tutorial with videos start */
 
-/* Banner for all pages start */
-.banner-area {
-	width: 70%;
-  margin-right:30px;
-  margin-left: 275px;
-	height: 200px;
-	position: absolute;
-	top: 80px;
-	background-image: url(/static/img/asteroid_header.jpeg);
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: center center;
-}
-.banner-area h2 {
-	padding-top: 3%;
-	font-size: 70px;
-	text-transform: uppercase;
-	color: #fff;
-  text-align: center;
-}
-/* Banner for all pages end */
+  /* Banner for all pages start */
+  .banner-area {
+    width: 70%;
+    margin-right:30px;
+    margin-left: 275px;
+    height: 200px;
+    position: absolute;
+    top: 80px;
+    background-image: url(/static/img/asteroid_header.jpeg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+  }
+  .banner-area h2 {
+    padding-top: 3%;
+    font-size: 70px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+  }
+  /* Banner for all pages end */
 
-/* Content Area for all Pages except homepage start */
-.content-area {
-	position: absolute;
-	top: 280px;
-	background: #ebebeb;
-	min-height: 700px;
-  width:70%; 
-  margin-right:30px;
-  margin-left: 275px;
-}
-.content-area h2 {
-	letter-spacing: 4px;
-	padding-top: 30px;
-	font-size: 40px;
-	margin: 0;
-}
-.content-area p {
-	padding: 2% 0px;
-	font-family: poppins;
-	line-height: 30px;
-}
-video {
-  margin-top: 30px;
-}
-#video_subtitle {
-  font-size: 15px;
-  overflow:scroll;
-  overflow-x:hidden;
-  height: 250px;
-  width: 95%;
-  margin-left:15px;
-}
-/* Content Area for all Pages except homepage start */
-/* Banner for all pages start */
-.banner-area {
-	width: 75%;
-  margin-right:30px;
-  margin-left: 150px;
-	height: 200px;
-	position: absolute;
-	top: 80px;
-	background-image: url(/static/img/asteroid_header.jpeg);
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: center center;
-}
-.banner-area h2 {
-	padding-top: 3%;
-	font-size: 70px;
-  margin-top: 20px;
-	text-transform: uppercase;
-	color: #fff;
-  text-align: center;
-}
-/* Banner for all pages end */
+  /* Content Area for all Pages except homepage start */
+  .content-area {
+    position: absolute;
+    top: 280px;
+    background: #ebebeb;
+    min-height: 700px;
+    width:70%; 
+    margin-right:30px;
+    margin-left: 275px;
+  }
+  .content-area h2 {
+    letter-spacing: 4px;
+    padding-top: 30px;
+    font-size: 40px;
+    margin: 0;
+  }
+  .content-area p {
+    padding: 2% 0px;
+    font-family: poppins;
+    line-height: 30px;
+  }
+  video {
+    margin-top: 30px;
+  }
+  #video_subtitle {
+    font-size: 15px;
+    overflow:scroll;
+    overflow-x:hidden;
+    height: 250px;
+    width: 95%;
+    margin-left:15px;
+  }
+  /* Content Area for all Pages except homepage start */
+  /* Banner for all pages start */
+  .banner-area {
+    width: 75%;
+    margin-right:30px;
+    margin-left: 150px;
+    height: 200px;
+    position: absolute;
+    top: 80px;
+    background-image: url(/static/img/asteroid_header.jpeg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+  }
+  .banner-area h2 {
+    padding-top: 3%;
+    font-size: 70px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+  }
+  /* Banner for all pages end */
 
-/* Content Area for all Pages except homepage start */
-.content-area {
-	position: absolute;
-	top: 280px;
-	background: #ebebeb;
-	min-height: 700px;
-  width: 75%;
-  margin-right:30px;
-  margin-left: 150px;
-}
-.content-area h2 {
-	letter-spacing: 4px;
-	padding-top: 30px;
-	font-size: 30px;
-	margin-left: -150px;
-}
-.content-area p {
-	padding: 2% 0px;
-	font-family: poppins;
-	line-height: 20px;
-}
-.wrapper h1 {
-  font-size: 20px;
-}
+  /* Content Area for all Pages except homepage start */
+  .content-area {
+    position: absolute;
+    top: 280px;
+    background: #ebebeb;
+    min-height: 700px;
+    width: 75%;
+    margin-right:30px;
+    margin-left: 150px;
+  }
+  .content-area h2 {
+    letter-spacing: 4px;
+    padding-top: 30px;
+    font-size: 30px;
+    margin-left: -150px;
+  }
+  .content-area p {
+    padding: 2% 0px;
+    font-family: poppins;
+    line-height: 20px;
+  }
+  .wrapper h1 {
+    font-size: 20px;
+  }
 
-video {
-  margin-top: 50px;
-  width: 60%;
-  margin-left: -480px;
-}
-#video_subtitle {
-  font-size: 15px;
-  overflow:scroll;
-  overflow-x:hidden;
-  height: 250px;
-  width: 60%;
-  margin-left:-110px;
-}
-#video_subtitle h2 {
-  margin-left:15px;
-}
-/* Content Area for all Pages except homepage start */
+  video {
+    margin-top: 50px;
+    width: 60%;
+    margin-left: -480px;
+  }
+  #video_subtitle {
+    font-size: 15px;
+    overflow:scroll;
+    overflow-x:hidden;
+    height: 250px;
+    width: 60%;
+    margin-left:-110px;
+  }
+  #video_subtitle h2 {
+    margin-left:15px;
+  }
+  /* Content Area for all Pages except homepage start */
 
-/* Asteroid Selection Page start */
-#asteroid_start_date{
-  width:50%;
-}
-#asteroid_end_date{
-  width:50%;
-}
-#asteroid_selection_title {
-  word-break: break-word;
-  width: 80%;
-}
-.asteroids_selection label {
-  margin-left: -110px;
-}
-.asteroids_selection {
-  margin-top: 30px;
-}
-#asteroid_selection_button{
-  margin-left: -98px;
-}
-/* Asteroid Selection Page ends */
+  /* Asteroid Selection Page start */
+  #asteroid_start_date{
+    width:50%;
+  }
+  #asteroid_end_date{
+    width:50%;
+  }
+  #asteroid_selection_title {
+    word-break: break-word;
+    width: 80%;
+  }
+  .asteroids_selection label {
+    margin-left: -110px;
+  }
+  .asteroids_selection {
+    margin-top: 30px;
+  }
+  #asteroid_selection_button{
+    margin-left: -98px;
+  }
+  /* Asteroid Selection Page ends */
 
-/* Apod Page start*/
-#apod_info h2 {
-  margin-left: 15px;
-  font-size: xx-large;
-}
-#apod_info li {
-  background-color: #ebebeb; 
-  margin-top:20px; 
-  text-align: left;
-  font-size: 15px;
-  width: 80%;
-}
-#apod_other_info {
-  background-color: #ebebeb; 
-  text-align: left;
-  margin-bottom: -10px;
-}
-#apod_form {
-  font-weight:bold; 
-  font-size: medium;
-  margin-left: -45px;
-  margin-top:-10px;
-}
-#apod_date {
-  margin-left:120px;
-  margin-top: 5px;
-}
-#apod_submit_button {
-  margin-left: -120px;
-  margin-top: -15px;
-}
-#apod_img img {
-  width:410px;
-  height: 350px;
-  margin-left: -480px;
-}
-#apod_img a {
-  width:410px;
-  height: 350px;
-  margin-left: -480px;
-}
-/* Apod Page end */
+  /* Apod Page start*/
+  #apod_info h2 {
+    margin-left: 15px;
+    font-size: xx-large;
+  }
+  #apod_info li {
+    background-color: #ebebeb; 
+    margin-top:20px; 
+    text-align: left;
+    font-size: 15px;
+    width: 80%;
+  }
+  #apod_other_info {
+    background-color: #ebebeb; 
+    text-align: left;
+    margin-bottom: -10px;
+  }
+  #apod_form {
+    font-weight:bold; 
+    font-size: medium;
+    margin-left: -45px;
+    margin-top:-10px;
+  }
+  #apod_date {
+    margin-left:120px;
+    margin-top: 5px;
+  }
+  #apod_submit_button {
+    margin-left: -120px;
+    margin-top: -15px;
+  }
+  #apod_img img {
+    width:410px;
+    height: 350px;
+    margin-left: -480px;
+  }
+  #apod_img a {
+    width:410px;
+    height: 350px;
+    margin-left: -480px;
+  }
+  /* Apod Page end */
 
-/* All Asteroids Page start*/
-#asteroids_list {
-  text-align: center;
-  justify-content: center;
-}
-#asteroids_list ul {
-  height:610px; 
-  width:80%; 
-  
-  overflow-y:scroll; 
-  font-size: medium; 
-  margin-top:30px;
-}
-/* All Asteroids Page end */
+  /* All Asteroids Page start*/
+  #asteroids_list {
+    text-align: center;
+    justify-content: center;
+  }
+  #asteroids_list ul {
+    height:610px; 
+    width:80%; 
+    
+    overflow-y:scroll; 
+    font-size: medium; 
+    margin-top:30px;
+  }
+  /* All Asteroids Page end */
 
-/* Styling for accordion on about page with login start */
-#about-accordion {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size:15px;
-  margin-top: 50px;
-  margin-left: 55px;
-  width: 60%;
-}
-/* Styling for accordion on about page with login end */
+  /* Styling for accordion on about page with login start */
+  #about-accordion {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size:15px;
+    margin-top: 50px;
+    margin-left: 55px;
+    width: 60%;
+  }
+  /* Styling for accordion on about page with login end */
 
-/* Change account info styling start */
-#account_information_title{
-  font-size: 60px;
-}
-.change-acc-info .col-3 {
-  margin-left: 260px;
-}
-#acc-info-submit{
-  margin-left: -350px;
-}
-#change-acc-title {
-  margin-left: -350px;
-}
-/* Change account info styling end */
+  /* Change account info styling start */
+  #account_information_title{
+    font-size: 60px;
+  }
+  .change-acc-info .col-3 {
+    margin-left: 260px;
+  }
+  #acc-info-submit{
+    margin-left: -350px;
+  }
+  #change-acc-title {
+    margin-left: -350px;
+  }
+  /* Change account info styling end */
 
-/* Change password styling starts */
-#change-password-title {
-  margin-left: -350px;
-}
-.change-password .row {
-  margin-left:40px;
-  margin-top: 50px;
-}
-#message {
-  margin-left: -190px;
-}
-#change-password-input-field {
-  margin-left: 250px;
-}
-#password-submit {
-  margin-left: -385px;
-}
-/* Change password styling ends */
+  /* Change password styling starts */
+  #change-password-title {
+    margin-left: -350px;
+  }
+  .change-password .row {
+    margin-left:40px;
+    margin-top: 50px;
+  }
+  #message {
+    margin-left: -190px;
+  }
+  #change-password-input-field {
+    margin-left: 250px;
+  }
+  #password-submit {
+    margin-left: -385px;
+  }
+  /* Change password styling ends */
+
+  /* Asteroid Details Table start */
+
+  #asteroid_details_list h2{
+    margin-left: -110px;
+  }
+  #asteroid_details_list .content{
+    margin-left: 20px;
+  }
+
+  #asteroid_details_list .item {
+    width:60%;
+    margin-left: 20px;
+  }
+  #asteroid_details_button {
+    margin-left: -100px;
+  }
+  /* Asteroid Details Table end */
 
 }
 
@@ -1288,11 +1331,358 @@ video {
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  #homepage-login-form{
-    background: red;
+
+  body {
+    touch-action: pan-y;
   }
-  
+  /* Landing Page start */
+  .container .signin-signup .row .col-10 {
+    width: 10;
+    margin-left: 10px !important;
+  }
+  #homepage-login-form{
+    margin-bottom: 250px;
+  }
+  #login-btn {
+    margin-left: -15px;
+  }
+  #rememberme-button {
+    margin-left: -300px;
+  }
+  #forgot-password{
+    margin-left: -15px;
+    margin-top: 5px;
+  }
+  #signup-password-field {
+    width: 330px;
+  }
+  #homepage-user-input-field {
+    margin-left: 90px;
+    width:150px;
+  }
+  #homepage-user-password-input-field {
+    width: 150px;
+  }
+  #signup-button {
+    margin-left: -110px;
+  }
+  .title {
+    margin-left:-20px;
+  }
+  #signup-title{
+    margin-right: 50px;
+  }
+
+  #homepage-signup-form {
+    margin-top: 50px;
+    margin-left: 100px;
+  }
+/* Landing Page end */
+
+/* Navbar start */
+.navbar {
+  z-index: 1;
+  margin-right:30px;
+  margin-left: 120px;
 }
+#navbarDropdown{
+  padding-bottom: 2rem;
+  color: rgba(255,255,255,.55);
+}
+.navbar-brand {
+  font-size: 20px;
+}
+.navbar-brand img {
+  width: 35px;
+  height:28px;
+}
+.nav-item {
+  margin-left: 25px;
+  font-size:18px;
+}
+.dropdown-menu {
+  background-color: #212529 !important;
+  color:#212529 !important;
+}
+.dropdown-item {
+  color: rgba(255,255,255,.55) !important;
+  background-color: #212529 !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+a.dropdown-item:hover,
+a.dropdown-item:active {
+  color: white !important;
+  opacity: 80% !important;
+}
+/* Navbar end */
+
+/* Banner for all pages start */
+.banner-area {
+	width: 70%;
+  margin-right:30px;
+  margin-left: 120px;
+	height: 200px;
+	position: absolute;
+	top: 45px;
+	background-image: url(/static/img/asteroid_header.jpeg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+.banner-area h2 {
+	margin-top: 30px;
+	font-size: 70px;
+	text-transform: uppercase;
+	color: #fff;
+  text-align: center;
+}
+/* Banner for all pages end */
+
+/* Content Area for all Pages except homepage start */
+.content-area {
+	position: absolute;
+	top: 240px;
+	background: #ebebeb;
+	min-height: 500px;
+  width:70%; 
+  margin-right:30px;
+  margin-left: 120px;
+}
+.content-area h2 {
+	letter-spacing: 4px;
+	padding-top: 30px;
+	font-size: 30px;
+	margin-left: -300px;
+}
+.content-area p {
+	font-family: poppins;
+	line-height: 20px;
+ 
+}
+#educational_videos {
+  display:none;
+}
+#video_subtitle {
+  display:none;
+}
+/* Content Area for all Pages except homepage start */
+
+
+/* Homepage Tutorial with videos start */
+#homepage_video {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.homepage_tutorial {
+  overflow: scroll;
+  width: 48%;
+  height:500px;
+  margin-top:20px;
+  overflow-x: hidden;
+}
+#homepage_video_subtitle h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:20px;
+  margin-top: 20px;
+  font-weight: bold;
+  margin-left: 50px;
+  width: 80%;
+  margin-bottom: 20px;
+}
+#homepage_video_subtitle p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:15px;
+  margin-top: -30px;
+  margin-bottom: 40px;
+}
+.homepage-wrapper h2 {
+	width: 48%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size:40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.homepage-wrapper h3 {
+	width: 48%;
+  word-break: break-word;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  margin-left: 10px;
+}
+#homepage_video_subtitle video {
+  width:60%;
+  height:80%;
+  margin-top:-30px;
+  margin-left: 60px;
+}
+/* Homepage Tutorial with videos start */
+
+/* Asteroid Details Table start */
+
+#asteroid_details_list h2{
+  margin-left: 120px;
+}
+#asteroid_details_list .content{
+  margin-left: 20px;
+}
+
+#asteroid_details_list .item {
+  width:100%;
+  margin-left: 50px;
+}
+#asteroid_details_button {
+  margin-left: 120px;
+}
+/* Asteroid Details Table end */
+
+
+/* Asteroid Selection Page start */
+#asteroid_start_date{
+  width:100%;
+  margin-left: 40px;
+}
+#asteroid_end_date{
+  width:100%;
+  margin-left: 40px;
+}
+#asteroid_selection_title {
+  word-break: break-word;
+  width: 80%;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+.asteroids_selection label {
+  margin-left: 80px;
+}
+.asteroids_selection {
+  margin-top: 30px;
+}
+#asteroid_selection_button{
+  margin-left: 110px;
+}
+/* Asteroid Selection Page ends */
+
+/* All Asteroids Page start*/
+#asteroids_list {
+  text-align: center;
+  justify-content: center;
+}
+#asteroids_list ul {
+  height:610px; 
+  width:100%; 
+  margin-left:40px;
+  overflow-y:scroll; 
+  font-size: medium; 
+  margin-top:20px;
+}
+/* All Asteroids Page end */
+
+
+/* Styling for accordion on about page with login start */
+#about-accordion {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:15px;
+  margin-top: 50px;
+  margin-left: 55px;
+  width: 40%;
+}
+/* Styling for accordion on about page with login end */
+
+/* Apod Page start*/
+#apod_details {
+  flex-flow: column wrap;
+  flex-direction: column-reverse;
+}
+
+#apod_info h2 {
+  margin-left: -200px;
+  font-size: xx-large;
+  width:70%;
+}
+#apod_info li {
+  background-color: #ebebeb; 
+  margin-top:10px; 
+  text-align: left;
+  font-size: 15px;
+  width:100%;
+  margin-left: -300px;
+}
+#apod_other_info {
+  background-color: #ebebeb; 
+  text-align: left;
+}
+#apod_form {
+  font-weight:bold; 
+  font-size: medium;
+  margin-left: -590px;
+  margin-top:-10px;
+}
+#apod_date {
+  margin-left:-120px;
+  margin-top: 5px;
+}
+#apod_submit_button {
+  margin-left: -590px;
+  margin-top: -15px;
+}
+#apod_img img {
+  width:410px;
+  height: 350px;
+  margin-left: -590px;
+  margin-top:20px;
+}
+#apod_img a {
+  margin-left: -590px;
+  margin-top:150px;
+}
+/* Apod Page end */
+
+/* Change account info styling start */
+#account_information_title{
+  font-size: 60px;
+  margin-top: 5px;
+}
+.change-acc-info .col-3 {
+  margin-left: 150px;
+}
+#acc-info-submit{
+  margin-left: -550px;
+}
+#change-acc-title {
+  margin-left: -590px;
+}
+/* Change account info styling end */
+
+/* Change password styling starts */
+#change-password-title {
+  margin-left: 110px;
+  word-break: break-word;
+  width:30%;
+}
+.change-password .row {
+  margin-left:40px;
+  margin-top: 50px;
+}
+#message {
+  margin-left: -10px;
+}
+#change-password-input-field {
+  margin-left: 150px;
+}
+#password-submit {
+  margin-left: -585px;
+}
+/* Change password styling ends */
+
+}
+/* IPAD PORTRAIT ENDS */
+
 
 /* 
   ##Device = Tablets, Ipads (landscape)

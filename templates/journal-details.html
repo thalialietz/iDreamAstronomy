@@ -10,9 +10,9 @@
   <div class="content-area">
     <div class="wrapper">
       <div class="row">
-        <div class="col-5" id="asteroids_list">
+        <div class="col-5" id="asteroid_details_list">
             <h2>{{ asteroid.name }}</h2>
-          <div class="ui relaxed divided list">
+          <div class="ui relaxed divided list" id="asteroid_details_list">
             <div class="item">
               <div class="content">
                 <h6 class="header"><a href='{{asteroid.nasa_jpl_url}}' target="_blank">JPL Small-Body Database Browser</a></h6>
@@ -74,7 +74,7 @@
               </div>
             </div>
           </div>
-          <form>
+          <form id="asteroid_details_button">
             <input type='text' name='asteroid_id' value= {{ asteroid.asteroid_id }} hidden>
             <button class="ui primary button" formaction="/delete-favorites" formmethod="post">
                 Remove from journal
@@ -85,7 +85,7 @@
           </form>
         </div>
         <div class="col-7">
-          <video controls autoplay muted>
+          <video controls autoplay muted id="educational_videos">
             <source src="/static/img/sunlight_push_asteroids.mp4" type="video/mp4">
           </video>
           <div id="video_subtitle">
