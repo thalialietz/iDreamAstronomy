@@ -1726,7 +1726,9 @@ a.dropdown-item:active {
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   
-  /* CSS */
+  #homepage-login-form {
+    background: black;
+  }
   
 }
 
@@ -1737,17 +1739,562 @@ a.dropdown-item:active {
 
 @media (min-width: 481px) and (max-width: 767px) {
   
-  /* CSS */
+  #homepage-login-form {
+    background: orange;
+  }
   
 }
 
+/* MEDIA BELOW FOR IPHONE 12 PRO MAX */
+@media (min-width: 425px) and (max-width: 480px) {
+  body {
+    touch-action: pan-y;
+  }
+  /* Landing Page start */
+  .container .signin-signup .row .col-10 {
+    width: 10;
+    margin-left: 10px !important;
+  }
+  #homepage-login-form{
+    margin-bottom: 30px;
+  }
+  #login-btn {
+    margin-left: -15px;
+  }
+  #rememberme-button {
+    margin-left: -300px;
+  }
+  #forgot-password{
+    margin-left: -15px;
+    margin-top: 5px;
+  }
+  #signup-password-field {
+    width: 330px;
+  }
+  #homepage-user-input-field {
+    margin-left: 60px;
+    width:150px;
+  }
+  #homepage-user-password-input-field {
+    width: 150px;
+  }
+  #signup-button {
+    margin-left: -110px;
+  }
+  .title {
+    margin-left:-20px;
+  }
+  #signup-title{
+    margin-right: 50px;
+  }
+
+  #homepage-signup-form {
+    margin-top: 50px;
+    margin-left: 100px;
+  }
+  .left-panel img,
+  .right-panel img {
+    margin-top: 50px;
+  }
+/* Landing Page end */
+
+}
 /* 
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
 */
+/* IPHONE 11 AND BELOW */
+@media (min-width: 320px) and (max-width: 425px) {
+  body {
+    touch-action: pan-y;
+  }
+  /* Landing Page start */
+  .container .signin-signup .row .col-10 {
+    width: 10;
+    margin-left: 10px !important;
+  }
+  #homepage-login-form{
+    margin-bottom: 30px;
+  }
+  #login-btn {
+    margin-left: -15px;
+  }
+  #rememberme-button {
+    margin-left: -300px;
+  }
+  #forgot-password{
+    margin-left: -15px;
+    margin-top: 5px;
+  }
+  #signup-password-field {
+    width: 330px;
+  }
+  #homepage-user-input-field {
+    margin-left: 30px;
+    width:150px;
+  }
+  #homepage-user-password-input-field {
+    width: 150px;
+  }
+  #signup-button {
+    margin-left: 25px;
+  }
+  .title {
+    margin-left:-20px;
+  }
+  #signup-title{
+    margin-right: -30px;
+  }
 
-@media (min-width: 320px) and (max-width: 480px) {
-  
-  /* CSS */
-  
+  #homepage-signup-form {
+    margin-top: -10px;
+    margin-left: -30px;
+  }
+  .left-panel img,
+  .right-panel img {
+    margin-top: 50px;
+  }
+/* Landing Page end */
+
+/* Forgot page with no login needed start */
+.forgot-banner-area {
+	width: 40%;
+	height: 100px;
+  top: 30px;
+  margin-right:30px;
+  margin-left: 80px;
+	position: absolute;
+	background-image: url(/static/img/asteroid_header.jpeg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+.forgot-banner-area h2 {
+	padding-top: 3%;
+	font-size: 40px;
+	text-transform: uppercase;
+	color: #fff;
+  text-align: center;
+}
+.forgot-content-area {
+	position: absolute;
+	top: 150px;
+	background: #ebebeb;
+	min-height: 400px;
+  width:70%; 
+  margin-right:30px;
+  margin-left: 50px;
+}
+.forgot-content-area h2 {
+	letter-spacing: 4px;
+	padding-top: 30px;
+  margin-left:40px;
+	font-size: 20px;
+  width:15%;
+	word-break: break-word;
+}
+.forgot-content-area p {
+	padding: 2% 0px;
+	font-family: poppins;
+	line-height: 30px;
+}
+.forgot-input-field {
+  max-width: 180px;
+  width: 50%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  margin-left: 40px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+.forgot-input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: #131212;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+.forgot-input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+.forgot-input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+  font-size:10px;
+}
+#form-forgot-button{
+  margin-left:-900px !important;
+}
+/* Forgot page with no login needed end */
+
+/* Navbar start */
+.navbar {
+  z-index: 1;
+  margin-right:30px;
+  margin-left: 0px;
+  width:100%;
+}
+#navbarDropdown{
+  padding-bottom: 2rem;
+  color: rgba(255,255,255,.55);
+}
+.navbar-brand {
+  font-size: 20px;
+}
+.navbar-brand img {
+  width: 35px;
+  height:28px;
+}
+.nav-item {
+  margin-left: 25px;
+  font-size:18px;
+}
+.dropdown-menu {
+  background-color: #212529 !important;
+  color:#212529 !important;
+}
+.dropdown-item {
+  color: rgba(255,255,255,.55) !important;
+  background-color: #212529 !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+a.dropdown-item:hover,
+a.dropdown-item:active {
+  color: white !important;
+  opacity: 80% !important;
+}
+/* Navbar end */
+
+/* Banner for all pages start */
+.banner-area {
+	width: 100%;
+  margin-right:30px;
+  margin-left: 0px;
+	height: 200px;
+	position: absolute;
+	top: 45px;
+	background-image: url(/static/img/asteroid_header.jpeg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+.banner-area h2 {
+	margin-top: 30px;
+	font-size: 50px;
+	text-transform: uppercase;
+	color: #fff;
+  text-align: center;
+}
+/* Banner for all pages end */
+
+/* Content Area for all Pages except homepage start */
+.content-area {
+	position: absolute;
+	top: 240px;
+	background: #ebebeb;
+	min-height: 500px;
+  width:100%; 
+  margin-right:30px;
+  margin-left: 0px;
+}
+.content-area h2 {
+	letter-spacing: 4px;
+	padding-top: 30px;
+	font-size: 30px;
+	margin-left: -300px;
+}
+.content-area p {
+	font-family: poppins;
+	line-height: 20px;
+ 
+}
+#educational_videos {
+  display:none;
+}
+#video_subtitle {
+  display:none;
+}
+/* Content Area for all Pages except homepage start */
+
+
+/* Homepage Tutorial with videos start */
+#homepage_video {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.homepage_tutorial {
+  overflow: scroll;
+  width: 32%;
+  height:500px;
+  margin-top:20px;
+  overflow-x: hidden;
+}
+#homepage_video_subtitle h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:20px;
+  margin-top: 20px;
+  font-weight: bold;
+  margin-left: 50px;
+  width: 80%;
+  margin-bottom: 20px;
+}
+#homepage_video_subtitle p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:15px;
+  margin-top: -30px;
+  margin-bottom: 40px;
+}
+.homepage-wrapper h2 {
+	width: 30%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size:32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+.homepage-wrapper h3 {
+	width: 30%;
+  word-break: break-word;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 15px;
+  margin-left: 15px;
+}
+#homepage_video_subtitle video {
+  width:60%;
+  height:80%;
+  margin-top:-30px;
+  margin-left: 60px;
+}
+/* Homepage Tutorial with videos start */
+
+/* Asteroid Details Table start */
+
+#asteroid_details_list h2{
+  margin-left: 20px;
+  width:70%;
+}
+#asteroid_details_list .content{
+  margin-left: -5px;
+}
+
+#asteroid_details_list .item {
+  width:70%;
+  margin-left: 20px;
+}
+#asteroid_details_button {
+  margin-left: -90px;
+}
+/* Asteroid Details Table end */
+
+
+/* Asteroid Selection Page start */
+#asteroid_start_date{
+  width:100%;
+  margin-left: -60px;
+}
+#asteroid_end_date{
+  width:100%;
+  margin-left: -60px;
+}
+#asteroid_selection_title {
+  word-break: break-word;
+  width: 80%;
+  margin-top: 50px;
+  margin-left: -2px;
+  font-size: 20px;
+}
+.asteroids_selection label {
+  margin-left: -110px;
+}
+.asteroids_selection {
+  margin-top: 30px;
+}
+#asteroid_selection_button{
+  margin-left: -100px;
+}
+/* Asteroid Selection Page ends */
+
+/* All Asteroids Page start*/
+#asteroids_list {
+  text-align: center;
+  justify-content: center;
+}
+#asteroids_list ul {
+  height:610px; 
+  width:60%; 
+  margin-left:40px;
+  overflow-y:scroll; 
+  font-size: medium; 
+  margin-top:20px;
+}
+/* All Asteroids Page end */
+
+
+/* Styling for accordion on about page with login start */
+#about-accordion {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:15px;
+  margin-top: 50px;
+  margin-left: 10px;
+  width: 30%;
+}
+/* Styling for accordion on about page with login end */
+
+/* Apod Page start*/
+#apod_details {
+  flex-flow: column wrap;
+  flex-direction: column-reverse;
+}
+
+#apod_info h2 {
+  margin-left: -330px;
+  font-size: xx-large;
+  width:70%;
+}
+#apod_info li {
+  background-color: #ebebeb; 
+  margin-top:10px; 
+  text-align: left;
+  font-size: 15px;
+  width:70%;
+  margin-left: -330px;
+}
+#apod_other_info {
+  background-color: #ebebeb; 
+  text-align: left;
+}
+#apod_form {
+  font-weight:bold; 
+  font-size: medium;
+  margin-left: -800px;
+  margin-top:-10px;
+  width: 70%;
+  word-break: break-word;
+}
+#apod_date {
+  margin-left:-220px;
+  margin-top: 5px;
+}
+#apod_submit_button {
+  margin-left: -790px;
+  margin-top: -15px;
+}
+#apod_img img {
+  width:350px;
+  height: 250px;
+  margin-left: -790px;
+  margin-top:20px !important;
+}
+#apod_img a {
+  margin-left: -790px;
+  margin-top:150px !important;
+}
+/* Apod Page end */
+
+/* Change account info styling start */
+#account_information_title{
+  font-size: 40px;
+  margin-top: 30px;
+}
+.change-acc-info .col-3 {
+  margin-left: 50px;
+}
+#acc-info-submit{
+  margin-left: -750px;
+}
+#change-acc-title {
+  margin-left: -50px;
+  width: 40%;
+  word-break: break-word;
+
+}
+/* Change account info styling end */
+
+/* Change password styling starts */
+#change-password-title {
+  margin-left: 20px;
+  word-break: break-word;
+  width:30%;
+}
+.change-password .row {
+  margin-left:0px;
+  margin-top: 50px;
+}
+#message {
+  margin-left: -400px;
+}
+#change-password-input-field {
+  margin-left: 70px;
+  width: 250px;
+}
+#password-submit {
+  margin-left: -770px;
+}
+/* Change password styling ends */
+
+/* About with No Login */
+.about-banner-area {
+	width: 100%;
+	height: 200px;
+  margin-right:30px;
+  margin-left: 0px;
+	position: absolute;
+	background-image: url(/static/img/asteroid_header.jpeg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+.about-banner-area h2 {
+	font-size: 70px;
+	text-transform: uppercase;
+	color: #fff;
+  top:20px;
+  text-align: center;
+}
+
+.about-content-area {
+	position: absolute;
+	top: 200px;
+	background: #ebebeb;
+	min-height: 500px;
+  width:100%; 
+  margin-right:30px;
+  margin-left: 0px;
+}
+.about-content-area h2 {
+	letter-spacing: 4px;
+	padding-top: 30px;
+	font-size: 40px;
+	margin: 0;
+}
+.about-content-area p {
+	padding: 2% 0px;
+	font-family: poppins;
+	line-height: 30px;
+}
+#about-nologin-accordion {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size:20px;
+  margin-top: 50px;
+  margin-left: 25px;
+  width: 87%;
+}
+/* About with No Login */
+
 }
