@@ -1408,6 +1408,10 @@ video {
     margin-top: 50px;
     margin-left: 100px;
   }
+  .left-panel img,
+  .right-panel img {
+    margin-top: 50px;
+  }
 /* Landing Page end */
 
 /* Navbar start */
