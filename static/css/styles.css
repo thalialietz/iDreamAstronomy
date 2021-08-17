@@ -282,8 +282,39 @@ video {
 /* Homepage Tutorial with videos start */
 
 /* Landing Page start */
+
+#login-btn {
+  margin-left: -35px;
+}
+#rememberme-button {
+  margin-left: -20px;
+}
+#forgot-password{
+  margin-left: -35px;
+  margin-top: 5px;
+}
+#signup-password-field {
+  width: 330px;
+}
 #homepage-user-input-field {
   margin-left: 80px;
+  width:200px;
+}
+#homepage-user-password-input-field {
+  width:200px;
+}
+#signup-button {
+  margin-left: -150px;
+}
+.title {
+  margin-left:-20px;
+}
+#signup-title{
+  margin-right: 90px;
+}
+.left-panel img,
+.right-panel img {
+  margin-top: 200px;
 }
 /* Landing Page end */
 
