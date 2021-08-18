@@ -135,7 +135,7 @@ def forgot_password_token():
         return render_template('reset_password.html')
 
 
-@app.route('/forgot/change/<token>')
+@app.route('idreamastronomy.com/forgot/change/<token>')
 def check_token_valid(token):
     """Check if the token if valid or expired, and if its expired throws an error"""
 
