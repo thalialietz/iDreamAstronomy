@@ -16,10 +16,11 @@ import random
 app = Flask(__name__)
 app.secret_key = 'SECRETSECRETSECRET'
 app.config['SECRET_KEY'] = str('flasksecretkey')
-app.config['SERVER_NAME'] = 'idreamastronomy.com'
+
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
+app.config['SERVER_NAME'] = 'idreamastronomy.com'
 app.config['MAIL_USERNAME'] = os.environ['EMAIL_ADDRESS']
 app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
 mail = Mail(app)
@@ -75,7 +76,7 @@ def send_email(subject, sender, recipients, text_body, html_body):
     
 def send_password_reset_email(user):
     """Creates a token for the user and request the email to be sent"""
-
+    
     secret = "jwt_secret"
     payload = {"exp": datetime.utcnow() + timedelta(minutes=5), "user_id": user.user_id}
     token = jwt.encode(payload, app.config['SECRET_KEY'], algorithm="HS256")
@@ -504,5 +505,5 @@ def logout():
 
 if __name__ == '__main__':
     connect_to_db(app)
-    app.run()
+    
     
