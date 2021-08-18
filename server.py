@@ -16,7 +16,6 @@ import random
 app = Flask(__name__)
 app.secret_key = 'SECRETSECRETSECRET'
 app.config['SECRET_KEY'] = str('flasksecretkey')
-app.config['SERVER_NAME'] = 'idreamastronomy.com'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
