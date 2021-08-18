@@ -78,14 +78,15 @@ def send_password_reset_email(user):
     secret = "jwt_secret"
     payload = {"exp": datetime.utcnow() + timedelta(minutes=5), "user_id": user.user_id}
     token = jwt.encode(payload, app.config['SECRET_KEY'], algorithm="HS256")
+    url = f"http://idreamastronomy.com/forgot/change/{token}"
 
     send_email('[iDreamAstronomy] Reset Your Password',
                sender='idreamastronomy@gmail.com',
                 recipients=[user.email],
                text_body=render_template('email/reset_password.txt',
-                                         user=user, token=token),
+                                         user=user, token=token, url=url),
                html_body=render_template('email/reset_password.html',
-                                         user=user, token=token))
+                                         user=user, token=token,url=url))
 
 
 @app.route('/forgot')
