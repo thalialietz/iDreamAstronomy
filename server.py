@@ -16,6 +16,7 @@ import random
 app = Flask(__name__)
 app.secret_key = 'SECRETSECRETSECRET'
 app.config['SECRET_KEY'] = str('flasksecretkey')
+app.config['SERVER_NAME'] = 'idreamastronomy.com'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -135,7 +136,7 @@ def forgot_password_token():
         return render_template('reset_password.html')
 
 
-@app.route('idreamastronomy.com/forgot/change/<token>')
+@app.route('/forgot/change/<token>')
 def check_token_valid(token):
     """Check if the token if valid or expired, and if its expired throws an error"""
 
