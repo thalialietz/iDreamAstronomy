@@ -17,7 +17,6 @@ app = Flask(__name__)
 app.secret_key = 'SECRETSECRETSECRET'
 app.config['SECRET_KEY'] = str('flasksecretkey')
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['SERVER_NAME'] = "idreamastronomy.com"
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = os.environ['EMAIL_ADDRESS']
@@ -505,5 +504,5 @@ def logout():
 
 if __name__ == '__main__':
     connect_to_db(app)
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0')
     
