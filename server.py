@@ -101,6 +101,18 @@ def forgot_password():
     return render_template('forgot_password.html')
 
 
+@app.route('/forgot')
+def forgot_password():
+    """Shows the form to ask for the user username or email to request a new password"""
+
+    username = session.get('username')
+
+    if username in session:
+        return redirect('/profile')
+    
+    return render_template('forgot_password.html')
+
+
 @app.route('/reset_password', methods=['GET', 'POST'])
 def reset_password_handle():
     """Handles the reset password form"""
