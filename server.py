@@ -74,18 +74,19 @@ def send_email(subject, sender, recipients, text_body, html_body):
     
 def send_password_reset_email(user):
     """Creates a token for the user and request the email to be sent"""
-
+    
     secret = "jwt_secret"
     payload = {"exp": datetime.utcnow() + timedelta(minutes=5), "user_id": user.user_id}
     token = jwt.encode(payload, app.config['SECRET_KEY'], algorithm="HS256")
+    url = f"http://idreamastronomy.com/forgot/change/{token}"
 
     send_email('[iDreamAstronomy] Reset Your Password',
                sender='idreamastronomy@gmail.com',
                 recipients=[user.email],
                text_body=render_template('email/reset_password.txt',
-                                         user=user, token=token),
+                                         user=user, token=token, url=url),
                html_body=render_template('email/reset_password.html',
-                                         user=user, token=token))
+                                         user=user, token=token, url=url))
 
 
 @app.route('/forgot')
@@ -115,7 +116,7 @@ def reset_password_handle():
         flash('Check your email for the instructions to reset your password')
         return redirect('/')
     if user is None:
-        flash("Sorry, we could not find this email in our database")
+        flash("Sorry, we could not find this email or username in our database")
 
     return redirect('/forgot')
 
@@ -199,7 +200,7 @@ def change_current_password():
     if user.password == current_password:
         user.password = new_password
         db.session.commit()
-        flash("password has been successfully updated!")
+        flash("Password has been successfully updated!")
         return redirect('/profile')
 
 
@@ -463,7 +464,7 @@ def register_user():
     if user:
         flash('Cannot create an account with that username and email. Try again')
     if password != confirm_password:
-        flash("The password dont match, try again")
+        flash("The password and confirm password do not match, try again")
     if password == confirm_password:
         crud.create_user(username, fname, lname, email, password)
         flash('Account created! Please log in')
@@ -485,7 +486,7 @@ def log_user_in():
         session['username'] = username
         return redirect('/profile')
     if user and user.password != password and user.password is not None:
-        flash("Wrong password, try again!")
+        flash("The username or password you entered is not correct, try again!")
     if user is None:
         flash("No account found with this username, please create an account first.")
 
