@@ -200,7 +200,7 @@ def change_current_password():
     if user.password == current_password:
         user.password = new_password
         db.session.commit()
-        flash("password has been successfully updated!")
+        flash("Password has been successfully updated!")
         return redirect('/profile')
 
 
@@ -464,7 +464,7 @@ def register_user():
     if user:
         flash('Cannot create an account with that username and email. Try again')
     if password != confirm_password:
-        flash("The password dont match, try again")
+        flash("The password and confirm password are not the same, try again")
     if password == confirm_password:
         crud.create_user(username, fname, lname, email, password)
         flash('Account created! Please log in')
@@ -486,7 +486,7 @@ def log_user_in():
         session['username'] = username
         return redirect('/profile')
     if user and user.password != password and user.password is not None:
-        flash("Wrong password, try again!")
+        flash("The username or password you entered is incorrect, try again!")
     if user is None:
         flash("No account found with this username, please create an account first.")
 
