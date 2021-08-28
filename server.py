@@ -95,8 +95,19 @@ def send_password_reset_email(user):
     send_email('[iDreamAstronomy] Reset Your Password',
                sender='idreamastronomy@gmail.com',
                 recipients=[user.email],
+<<<<<<< HEAD
+               text_body=render_template('email/reset_password.txt',
+                                         user=user, token=token, url=url),
+               html_body=render_template('email/reset_password.html',
+<<<<<<< HEAD
+                                         user=user, token=token,url=url))
+=======
+                                         user=user, token=token, url=url))
+>>>>>>> f281293b62f19d2836a0c6156d0fcb1cbcd7cd37
+=======
                text_body=render_template('email/reset_password.txt', user=user, token=token, url=url),
                html_body=render_template('email/reset_password.html', user=user, token=token, url=url))
+>>>>>>> 3b76a06268a03d99150482ec72049fd7ccdeb104
 
 
 @app.route('/forgot')
@@ -479,7 +490,11 @@ def register_user():
     if user:
         flash('Cannot create an account with that username and email. Try again')
     if password != confirm_password:
+<<<<<<< HEAD
+        flash("The password and confirm password are not the same, try again")
+=======
         flash("The password and confirm password do not match, try again")
+>>>>>>> f281293b62f19d2836a0c6156d0fcb1cbcd7cd37
     if password == confirm_password:
         crud.create_user(username, fname, lname, email, password)
         flash('Account created! Please log in')
@@ -502,7 +517,16 @@ def login():
         session['username'] = username
         return redirect('/profile')
     if user and user.password != password and user.password is not None:
+<<<<<<< HEAD
+        flash("The username or password you entered is incorrect, try again!")
+=======
         flash("The username or password you entered is not correct, try again!")
+<<<<<<< HEAD
+=======
+>>>>>>> f281293b62f19d2836a0c6156d0fcb1cbcd7cd37
+    if user is None:
+        flash("No account found with this username, please create an account first.")
+>>>>>>> 3c3fba3b7cf21ad9d1e16a3d4be2d2136483c1dd
 
     return redirect('/')
 
