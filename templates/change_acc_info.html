@@ -16,28 +16,29 @@
                     <div class="col-3">
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="New First Name" id="new_fname" name="new_fname">
+                            <input type="text" placeholder="New First Name" id="new_fname" name="new_fname" minlength="2" maxlength="35">
                         </div>
                     </div>
 
                     <div class="col-3">
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="New Last Name" id="new_lname" name="new_lname" >
+                            <input type="text" placeholder="New Last Name" id="new_lname" name="new_lname" minlength="2" maxlength="35">
                         </div>
                     </div>
 
                     <div class="col-3">
                         <div class="input-field">
                             <i class="fas fa-user-astronaut"></i>
-                            <input type="text" id="new_username" name="new_username" placeholder="New Username">
+                            <input type="text" id="new_username" name="new_username" placeholder="New Username" pattern="[a-z0-9-_.]{5,15}" title="Only lowercase letters, numbers, hyphens, underscores and periods are allowed, at least 5 characters and max of 15
+                            characters">
                         </div>
                     </div>
 
                     <div class="col-3">
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="email-address" placeholder="New Email" id="new_email" name="new_email" >
+                            <input type="email-address" placeholder="New Email" id="new_email" name="new_email" minlength="9" maxlength="62" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="This email is not valid" >
                         </div>
                     </div>
                     <button class="ui primary button" id="acc-info-submit">Submit</button>

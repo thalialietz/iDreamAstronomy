@@ -2,10 +2,11 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_login import UserMixin
 
 db = SQLAlchemy()
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     """A user."""
 
     __tablename__ = 'users'
@@ -22,6 +23,19 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User user_id={self.user_id} email={self.email} username={self.username}>'
+    
+    def is_active(self):
+        """True, as all users are active."""
+        return True
+    
+    def get_id(self):
+        """Return the user id address to satisfy Flask-Login's requirements."""
+        return self.user_id
+    
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        return self.authenticated
+
         
 
 class Favorite(db.Model):
