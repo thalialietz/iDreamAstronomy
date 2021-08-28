@@ -503,8 +503,6 @@ def login():
         return redirect('/profile')
     if user and user.password != password and user.password is not None:
         flash("The username or password you entered is not correct, try again!")
-    if user is None:
-        flash("No account found with this username, please create an account first.")
 
     return redirect('/')
 
