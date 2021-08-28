@@ -1,5 +1,6 @@
 from flask import (Flask, render_template, request, session,
                    redirect, url_for, flash)
+from flask_login import login_required, LoginManager, login_user, logout_user
 from threading import Thread
 from model import db, User, connect_to_db
 import crud
@@ -14,6 +15,16 @@ import random
 
 
 app = Flask(__name__)
+#Flask-login
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+@login_manager.user_loader
+def load_user(user_id):
+
+    return crud.get_user_by_id(user_id)
+
 app.secret_key = 'SECRETSECRETSECRET'
 app.config['SECRET_KEY'] = str('flasksecretkey')
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -29,7 +40,6 @@ API_KEY = os.environ['NASA_KEY']
 @app.route('/')
 def homepage():
     """Show homepage."""
-
     if 'username' in session:
         return redirect("/profile")
     else:
@@ -37,6 +47,7 @@ def homepage():
 
 
 @app.route('/profile')
+@login_required
 def account_homepage():
     """Show account homepage"""
 
@@ -48,6 +59,7 @@ def account_homepage():
 
 
 @app.route('/my-account')
+@login_required
 def my_account_details():
     """Show account details and allow user to make changes"""
 
@@ -86,7 +98,11 @@ def send_password_reset_email(user):
                text_body=render_template('email/reset_password.txt',
                                          user=user, token=token, url=url),
                html_body=render_template('email/reset_password.html',
+<<<<<<< HEAD
                                          user=user, token=token,url=url))
+=======
+                                         user=user, token=token, url=url))
+>>>>>>> f281293b62f19d2836a0c6156d0fcb1cbcd7cd37
 
 
 @app.route('/forgot')
@@ -116,7 +132,7 @@ def reset_password_handle():
         flash('Check your email for the instructions to reset your password')
         return redirect('/')
     if user is None:
-        flash("Sorry, we could not find this email in our database")
+        flash("Sorry, we could not find this email or username in our database")
 
     return redirect('/forgot')
 
@@ -175,6 +191,7 @@ def create_new_password():
 
 
 @app.route('/change-password')
+@login_required
 def change_password():
     """Display the form to change current password"""
 
@@ -203,11 +220,11 @@ def change_current_password():
         flash("Password has been successfully updated!")
         return redirect('/profile')
 
-
     return redirect('/change-password')
 
 
 @app.route('/change-acc-information')
+@login_required
 def change_acc_information():
     """Display the form to change account information"""
 
@@ -235,19 +252,14 @@ def change_account_info():
     if new_fname:
         user.fname = new_fname
         db.session.commit()
-        flash("The information you entered has been successfully updated!")
-        return redirect('/profile')
     if new_lname:
         user.lname = new_lname
         db.session.commit()
-        flash("The information you entered has been successfully updated!")
-        return redirect('/profile')
+        
     if new_email:
         try:
             user.email = new_email
             db.session.commit()
-            flash("Your email has been successfully updated!")
-            return redirect('/profile')
         except exc.IntegrityError:
             db.session.rollback()
             flash("Sorry, the email you entered is not available")
@@ -256,16 +268,17 @@ def change_account_info():
         try:
             user.username = new_username
             db.session.commit()
-            flash("Your username has been successfully updated!")
-            return redirect('/profile')
+            session['username'] = new_username
         except exc.IntegrityError:
             db.session.rollback()
             flash("Sorry, the username you entered is not available")
-    
-    return redirect('/change-acc-information')
+
+    flash("The information you entered has been successfully updated!")
+    return redirect('/profile')
 
 
 @app.route('/asteroids/selection')
+@login_required
 def show_asteroids_selection():
     """Allows the user to select a date range to see asteroids"""
 
@@ -273,6 +286,7 @@ def show_asteroids_selection():
 
 
 @app.route("/asteroids")
+@login_required
 def all_asteroids():
     """Show all asteroids"""
 
@@ -315,6 +329,7 @@ def all_asteroids():
 
 
 @app.route('/asteroids/<api_asteroid_id>')
+@login_required
 def get_asteroid_details(api_asteroid_id):
     """View the details of an asteroid."""
 
@@ -339,6 +354,7 @@ def get_asteroid_details(api_asteroid_id):
 
 
 @app.route('/apod')
+@login_required
 def show_picture_of_the_day():
     """Show the astronomy picture of the day"""
     
@@ -353,6 +369,7 @@ def show_picture_of_the_day():
 
 
 @app.route("/delete-favorites", methods=["POST"])
+@login_required
 def delete_favorite():
     """Deletes the favorite asteroid for that user"""
 
@@ -369,6 +386,7 @@ def delete_favorite():
 
 
 @app.route("/save-favorites", methods=["POST"])
+@login_required
 def save_favorites_asteroid():
     """Save favorite asteroid"""
 
@@ -415,6 +433,7 @@ estimated_diameter_miles_min=asteroid_details_dict['estimated_diameter_miles_min
 
 
 @app.route("/my-journal/<int:api_asteroid_id>")
+@login_required
 def favorite_asteroid_details(api_asteroid_id):
     """Display the favorite asteroids details"""
 
@@ -424,6 +443,7 @@ def favorite_asteroid_details(api_asteroid_id):
 
 
 @app.route("/my-journal")
+@login_required
 def personal_journal():
     """Display favorites asteroids for that user"""
 
@@ -435,6 +455,7 @@ def personal_journal():
 
 
 @app.route("/about")
+@login_required
 def about():
     """Displays the about the developer section"""
 
@@ -464,29 +485,38 @@ def register_user():
     if user:
         flash('Cannot create an account with that username and email. Try again')
     if password != confirm_password:
+<<<<<<< HEAD
         flash("The password and confirm password are not the same, try again")
+=======
+        flash("The password and confirm password do not match, try again")
+>>>>>>> f281293b62f19d2836a0c6156d0fcb1cbcd7cd37
     if password == confirm_password:
         crud.create_user(username, fname, lname, email, password)
         flash('Account created! Please log in')
 
     return redirect('/')
-
-
+    
+    
 @app.route('/log-in')
-def log_user_in():
+def login():
     """Logs the user in"""
 
     username = request.args.get('user_username')
     password = request.args.get("user_password")
 
     user = crud.get_user_by_username(username)
-
+    
     if user and user.password == password:
+        login_user(user)
         session['user_id'] = user.user_id
         session['username'] = username
         return redirect('/profile')
     if user and user.password != password and user.password is not None:
+<<<<<<< HEAD
         flash("The username or password you entered is incorrect, try again!")
+=======
+        flash("The username or password you entered is not correct, try again!")
+>>>>>>> f281293b62f19d2836a0c6156d0fcb1cbcd7cd37
     if user is None:
         flash("No account found with this username, please create an account first.")
 
@@ -494,11 +524,10 @@ def log_user_in():
 
 
 @app.route('/logout')
+@login_required
 def logout():
     """Removes the user from the session"""
-
-    session.pop('username', None)
-    session.pop('user_id', None)
+    session.clear()
     return redirect('/')
 
 
