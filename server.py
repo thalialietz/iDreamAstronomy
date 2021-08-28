@@ -95,6 +95,7 @@ def send_password_reset_email(user):
     send_email('[iDreamAstronomy] Reset Your Password',
                sender='idreamastronomy@gmail.com',
                 recipients=[user.email],
+<<<<<<< HEAD
                text_body=render_template('email/reset_password.txt',
                                          user=user, token=token, url=url),
                html_body=render_template('email/reset_password.html',
@@ -103,6 +104,10 @@ def send_password_reset_email(user):
 =======
                                          user=user, token=token, url=url))
 >>>>>>> f281293b62f19d2836a0c6156d0fcb1cbcd7cd37
+=======
+               text_body=render_template('email/reset_password.txt', user=user, token=token, url=url),
+               html_body=render_template('email/reset_password.html', user=user, token=token, url=url))
+>>>>>>> 3b76a06268a03d99150482ec72049fd7ccdeb104
 
 
 @app.route('/forgot')
