@@ -9,3 +9,7 @@ MarkupSafe==1.1.1
 requests==2.22.0
 urllib3==1.25.7
 Werkzeug==0.16.0
+flask-login==0.5.0
+flask-sqlalchemy==2.5.1
+flask-mail==0.9.1
+jwt==1.2.0
